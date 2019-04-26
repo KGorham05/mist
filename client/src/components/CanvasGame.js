@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import openSocket from 'socket.io-client';
 
-openSocket('http://localhost', {
-    rejectUnauthorized: false
-});
-
 class CanvasGame extends Component {
 
     movement = {
@@ -15,12 +11,12 @@ class CanvasGame extends Component {
     }
 
     componentDidMount() {
-        const socket = openSocket('http://localhost');
+        const socket = openSocket('http://localhost:3001');
 
         socket.emit('new player');
-        setInterval(function () {
+        setInterval(() => {
             socket.emit('movement', this.movement);
-        }, 1000 / 60);
+        }, 1000 / 20);
 
         const canvas = this.refs.canvasGame;
         canvas.width = 600;
@@ -29,19 +25,11 @@ class CanvasGame extends Component {
         const context = canvas.getContext("2d");
 
         socket.on('state', function (players) {
-            console.log(players);
             context.clearRect(0, 0, 800, 600);
-            context.fillStyle = 'green';
+            
             for (var id in players) {
                 var player = players[id];
-                if (player.predator) {
-                    context.fillStyle = 'red';
-                    context.beginPath();
-                    context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
-                    context.fill();
-                    context.fillStyle = 'green';
-                    continue;
-                }
+                context.fillStyle = (player.predator) ? 'red' : 'green';
                 context.beginPath();
                 context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
                 context.fill();

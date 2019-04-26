@@ -3,9 +3,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const http = require('http');
-const socketIO = require('socket.io');
 const server = http.Server(app);
-const io = socketIO(server);
+const io = require('socket.io')(server);
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const db = require('./models');
@@ -110,7 +109,7 @@ io.on('connection', function (socket) {
       };
     }
   });
-  socket.on('movement', function (data) {
+  socket.on('movement', function (data = {left: false, right: false, up: false, down: false}) {
     var player = players[socket.id] || {};
     if (data.left) {
       player.x -= 5;
@@ -169,6 +168,6 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function () {
+server.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
