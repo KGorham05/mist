@@ -29,7 +29,13 @@ mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', {useNewUrlParser: true, useCreateIndex: true})
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => console.error(err));
-
+//get news articles from the database route
+app.get("/api/articles", (req, res) => {
+  db.Article
+    .find({})
+    .then(dbArticle => res.json(dbArticle))
+    .catch(err => res.json(err))
+})
 //SCRAPE route
 const cheerio = require("cheerio")
 const axios = require("axios")
@@ -57,12 +63,11 @@ app.get("/scrape", (req, res) => {
       .create(post)
       .then(dbArticle => {
         console.log("added article to db")
+        
       })
       .catch(err => console.log(err))
   })
  })
-
-  
 })
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {

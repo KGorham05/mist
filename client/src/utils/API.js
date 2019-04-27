@@ -14,14 +14,9 @@ export default {
   //scrape code
   scrape: () => {
     axios.get("/scrape").then(res => console.log("scraped"))
-    // axios.get("https://nytimes.com").then(function(response) {
-    //   console.log("scraped")
-      // var $ = cheerio.load(response.data);
-      // var results = [];
-      // $()
-    }
-    //)
-    // return console.log("scraped")
-    //https://www.youtube.com/watch?v=i1wsTBxOIx4
-  //}
+   
+    },
+  getAllArticles: function(){
+    return axios.get("/api/articles")
+  }
 };
