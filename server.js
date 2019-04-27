@@ -34,14 +34,31 @@ mongoose
 const cheerio = require("cheerio")
 const axios = require("axios")
 app.get("/scrape", (req, res) => {
- axios.get("https://pokemongolive.com/en/post/").then(function(response){
-  //console.log("test passed")
-  var $ = cheerio.load(response.data);
-  var results = [];
-  $("div.post-list__title").each(function(i, element) {
-    // var day = $(element).find("a").find("div.events-list__event__left").find("div.events-list__event__date").find("span.events-list__event__date__day").text()
-    var update = $(element).find("a").text()
-    console.log(update)
+//  axios.get("https://pokemongolive.com/en/post/").then(function(response){
+//   //console.log("test passed")
+//   var $ = cheerio.load(response.data);
+//   var results = [];
+//   $("div.post-list__title").each(function(i, element) {
+    
+//     var update = $(element).find("a").text()
+//     console.log(update)
+//   })
+//  })
+ axios.get("http://www.nintendolife.com/pokemon/news").then(function(response) {
+  var $ = cheerio.load(response.data)
+  
+  $("li.item-article").each(function(i, element) {
+    var title = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").find("span.title").text()
+    //console.log(title)
+    let post = {
+      title: title
+    }
+    db.Article
+      .create(post)
+      .then(dbArticle => {
+        console.log("added article to db")
+      })
+      .catch(err => console.log(err))
   })
  })
 
