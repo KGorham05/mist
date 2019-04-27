@@ -32,7 +32,7 @@ mongoose
 //get news articles from the database route
 app.get("/api/articles", (req, res) => {
   db.Article
-    .find({})
+    .find({}).limit(10)
     .then(dbArticle => res.json(dbArticle))
     .catch(err => res.json(err))
 })
