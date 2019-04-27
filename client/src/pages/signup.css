@@ -1,0 +1,28 @@
+body {
+    /* background: url("https://wallpapercave.com/wp/Ia5HD7J.jpg"); */
+    /* background: url("https://hdwallpaperim.com/wp-content/uploads/2017/08/31/163609-Pokemon-Snorlax-minimalism-748x421.jpg"); */
+    /* background: url("http://alena-vysotskaya.ru/images/100/DSC100108423.png"); */
+    background: url("https://hdqwalls.com/download/raichu-pokemon-go-qu-1920x1080.jpg");
+    /* background: url("https://wallpaperaccess.com/full/45642.jpg"); */
+    /* background: url("https://wallpaperaccess.com/full/183385.jpg"); */
+    /* background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2749b3cb-d0f1-442e-b31c-13356dde8ab7/d2z1fu0-dff2b11b-8c19-4a62-bf15-f915a6265e34.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3NDliM2NiLWQwZjEtNDQyZS1iMzFjLTEzMzU2ZGRlOGFiN1wvZDJ6MWZ1MC1kZmYyYjExYi04YzE5LTRhNjItYmYxNS1mOTE1YTYyNjVlMzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.mDn1ksXZBv5knwp48U8hW2cckV1iO46ces4hSQvZE1M"); */
+    /* background: url("https://66.media.tumblr.com/49b7a488d6f3a09e26dffdbbe4d05aaf/tumblr_ogqoz3or0t1vala9ro1_1280.gif"); */
+    /* background: url("https://thumbs.gfycat.com/FrenchFastJaguar-max-1mb.gif"); */
+    /* background: url("https://i.gifer.com/LvDU.gif"); */
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white
+}
+.signUp, .login {
+    background: rgb(256, 256, 256, 0.1);
+    width: 20vw;
+    margin-top: 40px;
+    margin-left: 10vw;
+}
+.navbar {
+    background: rgb(256, 256, 256, 0.1);
+}
+.navbar a {
+    color: white;
+}

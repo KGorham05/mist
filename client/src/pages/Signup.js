@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import AuthService from './../components/AuthService';
-import API from './../utils/API';
-
+import AuthService from '../components/AuthService';
+import API from '../utils/API';
+import "./signup.css"
 class Signup extends Component {
   constructor() {
     super();
@@ -35,7 +35,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container signUp">
 
         <h1>Signup</h1>
         <form onSubmit={this.handleFormSubmit}>

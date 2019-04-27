@@ -30,7 +30,23 @@ mongoose
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => console.error(err));
 
+//SCRAPE route
+const cheerio = require("cheerio")
+const axios = require("axios")
+app.get("/scrape", (req, res) => {
+ axios.get("https://pokemongolive.com/en/post/").then(function(response){
+  //console.log("test passed")
+  var $ = cheerio.load(response.data);
+  var results = [];
+  $("div.post-list__title").each(function(i, element) {
+    // var day = $(element).find("a").find("div.events-list__event__left").find("div.events-list__event__date").find("span.events-list__event__date__day").text()
+    var update = $(element).find("a").text()
+    console.log(update)
+  })
+ })
 
+  
+})
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {
   auth
