@@ -32,7 +32,7 @@ mongoose
 //get news articles from the database route
 app.get("/api/articles", (req, res) => {
   db.Article
-    .find({}).limit(10)
+    .find({}).limit(12)
     .then(dbArticle => res.json(dbArticle))
     .catch(err => res.json(err))
 })
@@ -55,9 +55,11 @@ app.get("/scrape", (req, res) => {
   
   $("li.item-article").each(function(i, element) {
     var title = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").find("span.title").text()
-    //console.log(title)
+    var image = $(element).find("div.item-wrap").find("div.image").find("a").find("img").attr("src")
+    //console.log(image)
     let post = {
-      title: title
+      title: title,
+      image: image
     }
     db.Article
       .create(post)
