@@ -109,7 +109,7 @@ io.on('connection', function (socket) {
       };
     }
   });
-  socket.on('movement', function (data = {left: false, right: false, up: false, down: false}) {
+  socket.on('movement', function (data) {
     var player = players[socket.id] || {};
     if (data.left) {
       player.x -= 5;

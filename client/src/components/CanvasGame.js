@@ -3,7 +3,7 @@ import openSocket from 'socket.io-client';
 
 class CanvasGame extends Component {
 
-    movement = {
+    state = {
         up: false,
         down: false,
         left: false,
@@ -15,18 +15,29 @@ class CanvasGame extends Component {
 
         socket.emit('new player');
         setInterval(() => {
-            socket.emit('movement', this.movement);
+            socket.emit('movement', this.state);
         }, 1000 / 20);
 
         const canvas = this.refs.canvasGame;
         canvas.width = 600;
         canvas.height = 800;
 
+        // Make it listen for key presses
+        canvas.tabIndex = 1000;
+
+        canvas.addEventListener(
+            "keydown", this.keyDown, false
+        );
+
+        canvas.addEventListener(
+            "keyup", this.keyUp, false
+        );
+
         const context = canvas.getContext("2d");
 
-        socket.on('state', function (players) {
+        socket.on('state', players => {
             context.clearRect(0, 0, 800, 600);
-            
+
             for (var id in players) {
                 var player = players[id];
                 context.fillStyle = (player.predator) ? 'red' : 'green';
@@ -37,37 +48,38 @@ class CanvasGame extends Component {
         });
     }
 
-    keyDown(event) {
+    keyDown = (event) => {
+        console.log(event.keyCode);
         switch (event.keyCode) {
             case 65: // A
-                this.movement.left = true;
+                this.setState({ left: true });
                 break;
             case 87: // W
-                this.movement.up = true;
+                this.setState({ up: true });
                 break;
             case 68: // D
-                this.movement.right = true;
+                this.setState({ right: true });
                 break;
             case 83: // S
-                this.movement.down = true;
+                this.setState({ down: true });
                 break;
             default: break;
         }
     }
 
-    keyUp(event) {
+    keyUp = (event) => {
         switch (event.keyCode) {
             case 65: // A
-                this.movement.left = false;
+                this.setState({ left: false });
                 break;
             case 87: // W
-                this.movement.up = false;
+                this.setState({ up: false });
                 break;
             case 68: // D
-                this.movement.right = false;
+                this.setState({ right: false });
                 break;
             case 83: // S
-                this.movement.down = false;
+                this.setState({ down: false });
                 break;
             default: break;
         }
@@ -75,7 +87,6 @@ class CanvasGame extends Component {
 
     render() {
         return <canvas id="canvas" ref="canvasGame"
-            onKeyUp={this.keyUp} onKeyDown={this.keyDown}
             width={800} height={600}
             style={
                 {
