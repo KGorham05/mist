@@ -20,8 +20,8 @@
     margin-top: 40px;
     margin-left: 10vw;
 }
-.signUp .form {
-    background: rgba(32, 165, 98, 0.9);
+.form {
+    background: rgba(25, 131, 100, 0.9);
     color: white;
 }
 .signUp {
@@ -31,28 +31,44 @@
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    border: 1px solid black;
+    background-position: center bottom;
+    border: 1px solid rgba(32, 165, 98);
     height: 91.7vh;
     width: 100vw;
     margin: 0;
 }
 .login {
-    background: url("http://alena-vysotskaya.ru/images/100/DSC100108423.png");
+    background: url("https://thumbs.gfycat.com/FrenchFastJaguar-max-1mb.gif");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    border: 1px solid black;
+    background-position: center bottom;
+    border: 1px solid rgba(25, 131, 100, 0.9);
     color: white;
-    height: 100vh;
+    height: 91.7vh;
+    width: 100vw;
+    margin: 0;
+}
+.Profile {
+    background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cad4b52e-f6b1-432f-9035-a5f4853bcf15/d7i3cm4-dc9f4577-6b7d-4d59-8b46-a15bf5e84209.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2NhZDRiNTJlLWY2YjEtNDMyZi05MDM1LWE1ZjQ4NTNiY2YxNVwvZDdpM2NtNC1kYzlmNDU3Ny02YjdkLTRkNTktOGI0Ni1hMTViZjVlODQyMDkuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.MAvFmljnNt5yawKRk7Tm-59pAkenmRqY3ZmzVmfsMjI");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    border: 1px solid rgba(25, 131, 100, 0.9);
+    color: white;
+    height: 91.7vh;
     width: 100vw;
     margin: 0;
 }
 .navbar {
     /* background: rgb(256, 256, 256, 0.1); */
-    background: black;
+    /* background: black; */
+    background: rgba(25, 131, 100, 0.9);
 }
 .navbar a {
     color: white;
@@ -61,8 +77,8 @@
     background: darkred;
 }
 .articles .btn {
-    background: #000;
-    border: #fff
+    background:rgba(25, 131, 100, 0.9);
+    border: 2px solid white;
 }
 .row {
     width: 98.7vw
@@ -99,27 +115,30 @@
     color: #fff;
   }
 .card-title {
-    background: rgb(139, 0, 0);
+    background: rgba(25, 131, 100, 0.9);
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
     height: 17vh;
     text-align: center;
     margin-bottom: 0px;
+    
 }
 .card-text {
     padding: 15px;
 }
 .card:nth-child(even) h3{
-    background: black;
+    background: rgba(35, 187, 141, 0.9)
 }
 .home-image {
-    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5eIAB4doQhRSFQYjI4lsmDIDnaIg-0eTIE1TPTc5HcunJ_lFn");
-    background-position: center;
+    /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5eIAB4doQhRSFQYjI4lsmDIDnaIg-0eTIE1TPTc5HcunJ_lFn"); */
+    /* background: url("https://thumbs.gfycat.com/FrenchFastJaguar-max-1mb.gif"); */
+    background: url("https://thumbs.gfycat.com/HugeVengefulAmericanbittern-max-1mb.gif");
+    background-position: center bottom;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
-    box-shadow: 0 3000px rgba(0, 0, 0, 0.4) inset;
+    height: 91.7vh;
+    /* box-shadow: 0 3000px rgba(0, 0, 0, 0.4) inset; */
     color: white;
     text-align: center;
 }
