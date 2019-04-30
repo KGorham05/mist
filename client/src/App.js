@@ -4,6 +4,8 @@ import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
 import CanvasGame from './components/CanvasGame';
+import Chat from './components/Chat'
+
 const Auth = new AuthService();
 
 class App extends Component {
@@ -30,6 +32,7 @@ class App extends Component {
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
         </p>
         <CanvasGame />
+        <Chat />
       </div>
     );
   }
