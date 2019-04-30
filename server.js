@@ -2,6 +2,9 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const path = require('path');
+const http = require('http');
+const server = http.Server(app);
+const io = require('socket.io')(server);
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const db = require('./models');
@@ -26,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', {useNewUrlParser: true, useCreateIndex: true})
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', { useNewUrlParser: true, useCreateIndex: true })
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => console.error(err));
 
@@ -50,10 +53,10 @@ app.post('/api/signup', (req, res) => {
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
   db.User.findById(req.params.id).then(data => {
-    if(data) {
+    if (data) {
       res.json(data);
     } else {
-      res.status(404).send({success: false, message: 'No user found'});
+      res.status(404).send({ success: false, message: 'No user found' });
     }
   }).catch(err => res.status(400).send(err));
 });
@@ -77,12 +80,94 @@ app.use(function (err, req, res, next) {
   }
 });
 
+var players = {};
+predatorId = 0
+lastPredatorId = 0
+io.on('connection', function (socket) {
+  socket.on('disconnect', function () {
+    delete players[socket.id];
+  })
+
+  socket.on('new player', function () {
+    console.log("contents of players, ", players);
+
+    if (isEmpty(players)) {
+      players[socket.id] = {
+        x: 800 * Math.random(),
+        y: 600 * Math.random(),
+        predator: true,
+        lastPredator: false
+      };
+      predatorId = socket.id;
+      lastPredatorId = socket.id;
+    } else {
+      players[socket.id] = {
+        x: 800 * Math.random(),
+        y: 600 * Math.random(),
+        predator: false,
+        lastPredator: false
+      };
+    }
+  });
+  socket.on('movement', function (data) {
+    var player = players[socket.id] || {};
+    if (data.left) {
+      player.x -= 5;
+    }
+    if (data.up) {
+      player.y -= 5;
+    }
+    if (data.right) {
+      player.x += 5;
+    }
+    if (data.down) {
+      player.y += 5;
+    }
+  });
+});
+
+setInterval(function () {
+  for (var prey in players) {
+    if (prey == predatorId) continue //same id, not self is not prey
+    console.log(
+      Math.sqrt(
+        Math.pow(players[predatorId].x - players[prey].x, 2) +
+        Math.pow(players[predatorId].y - players[prey].y, 2))
+    )
+    if ((Math.sqrt(
+      Math.pow(players[predatorId].x - players[prey].x, 2) +
+      Math.pow(players[predatorId].y - players[prey].y, 2)) < 20)
+      && !players[prey].lastPredator) {
+      console.log("INTERSECTION!");
+      players[lastPredatorId].lastPredator = false;
+      players[predatorId].predator = false;
+      players[predatorId].lastPredator = true;
+      players[prey].predator = true;
+      lastPredatorId = predatorId;
+      predatorId = prey;
+    }
+  }
+
+  io.sockets.emit('state', players);
+}, 1000 / 60);
+
+//////////////////////////////////////////////////////////////
+// useful functions....
+function isEmpty(obj) {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key))
+      return false;
+  }
+  return true;
+}
+
+
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
+server.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
