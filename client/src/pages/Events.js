@@ -23,26 +23,31 @@ class Events extends React.Component {
     render() {
         return (
             <div className="articles">
-                <div class="home-image">
-                    <h1 class="home-title">Pokemon News</h1>
-                    <h2 class="home-subtitle">NintendoLife Edition</h2>
-                    <button className="btn btn-primary" onClick={this.handleScrape()}>Scrape</button>
+                <div className="home-image">
+                    <h1 className="home-title">Pokemon News</h1>
+                    <h2 className="home-subtitle">NintendoLife Edition</h2>
+                    <button className="btn btn-primary" onClick={this.handleScrape}>Scrape</button>
                 </div>
                 {/* Articles */}
-                <div class="articles row">
+                <div className="articles row">
                     {this.state.articles.map(article => (
                         <div className="card bg-dark text-white col-md-4">
+                        <a href={article.link}>
+                            <h3 className="card-title">
+                                {article.title}
+                            </h3>
                             <img src={article.image} className="card-img" alt="article img"></img>
                             <div className="card-img-overlay">
-                                <a href="#" target="_blank">
-                                    <h3 className="card-title">
-                                        {article.title}
-                                    </h3>
-                                </a>
-                                <p className="card-text">
-                                    Summary goes here
-                                </p>
+                                
+
+                                
+                                <div className="transbox">
+                                    <p className="card-text">
+                                        {article.summary}
+                                    </p>
+                                </div>
                             </div>
+                            </a>
                         </div>
                     ))}
                 </div>

@@ -20,10 +20,30 @@
     margin-top: 40px;
     margin-left: 10vw;
 }
+.signUp .form {
+    background: rgba(32, 165, 98, 0.9);
+    color: white;
+}
+.signUp {
+    background: url("https://i.gifer.com/LvDU.gif");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid black;
+    height: 91.7vh;
+    width: 100vw;
+    margin: 0;
+}
 .login {
     background: url("http://alena-vysotskaya.ru/images/100/DSC100108423.png");
-    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
+    background-repeat: no-repeat;
     border: 1px solid black;
     color: white;
     height: 100vh;
@@ -40,6 +60,13 @@
 .articles {
     background: darkred;
 }
+.articles .btn {
+    background: #000;
+    border: #fff
+}
+.row {
+    width: 98.7vw
+}
 .card {
     padding: 0;
     border: 2px solid black;
@@ -48,17 +75,40 @@
     color: white;
 }
 .card-img {
-    height: 100%;
-    margin-top: 25%
+    height: 50vh;
 }
+
 .card-img-overlay {
-    padding: 0;
+    padding: 0;   
 }
+.transbox {
+    margin: 30px;
+    margin-top: 23vh;
+    background-color: #000;
+    border: 1px solid black;
+    opacity: 0.8;
+    display: none
+  }
+.card-img-overlay:hover .transbox  {
+    display: block;
+}
+
+.transbox p {
+    margin: 5%;
+    font-weight: bold;
+    color: #fff;
+  }
 .card-title {
     background: rgb(139, 0, 0);
-    padding: 10px;
-    height: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    height: 17vh;
     text-align: center;
+    margin-bottom: 0px;
+}
+.card-text {
+    padding: 15px;
 }
 .card:nth-child(even) h3{
     background: black;

@@ -55,11 +55,16 @@ app.get("/scrape", (req, res) => {
   
   $("li.item-article").each(function(i, element) {
     var title = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").find("span.title").text()
-    var image = $(element).find("div.item-wrap").find("div.image").find("a").find("img").attr("src")
+    var image = $(element).find("div.item-wrap").find("div.image").find("a").find("img").attr("src");
+    var summary = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.text").text()
+    var link = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").attr("href")
+    link = "https://nintendolife.com/" + link
     //console.log(image)
     let post = {
       title: title,
-      image: image
+      image: image,
+      summary: summary,
+      link: link
     }
     db.Article
       .create(post)
