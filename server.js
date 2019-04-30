@@ -128,7 +128,13 @@ io.on('connection', function (socket) {
   });
 
   // CHAT LOGIC
-
+  
+  socket.on('new message', (data) => {
+    // we tell the client to execute 'new message'
+    socket.broadcast.emit('new message', {
+      message: data
+    });
+  });
 
 
 });

@@ -5,11 +5,13 @@ import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
 import CanvasGame from './components/CanvasGame';
 import Chat from './components/Chat'
+import openSocket from 'socket.io-client';
+
+const socket = openSocket('http://localhost:3001');
 
 const Auth = new AuthService();
 
 class App extends Component {
-
 
   handleLogout = () => {
     Auth.logout();
@@ -20,7 +22,7 @@ class App extends Component {
     this.props.history.replace('/profile');
   };
 
-  render() {
+  render = () => {
     // console.log(process.env.REACT_APP_SECRET_CODE);
     return (
       <div className="App">
@@ -31,8 +33,8 @@ class App extends Component {
           <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
         </p>
-        <CanvasGame />
-        <Chat />
+        <CanvasGame socket={socket} />
+        <Chat socket={socket} />
       </div>
     );
   }
