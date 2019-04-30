@@ -19,8 +19,8 @@ class CanvasGame extends Component {
         }, 1000 / 20);
 
         const canvas = this.refs.canvasGame;
-        canvas.width = 600;
-        canvas.height = 800;
+        canvas.width = 800;
+        canvas.height = 600;
 
         // Make it listen for key presses
         canvas.tabIndex = 1000;
