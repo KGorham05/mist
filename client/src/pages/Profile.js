@@ -21,7 +21,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="container Profile">
+      <div className="Profile">
         <h1>On the profile page!</h1>
         <p>Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
