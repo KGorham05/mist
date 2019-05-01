@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
+import openSocket from 'socket.io-client';
 
-export default function withAuth(AuthComponent) {
+const socket = openSocket('http://localhost:3001');
+
+export default function withAuth(AuthComponent, extraProp) {
     const Auth = new AuthService();
     return class AuthWrapped extends Component {
         constructor() {
@@ -21,7 +24,7 @@ export default function withAuth(AuthComponent) {
                         user: profile
                     });
                 }
-                catch(err){
+                catch (err) {
                     Auth.logout();
                     this.props.history.replace('/signup');
                 }
@@ -31,7 +34,7 @@ export default function withAuth(AuthComponent) {
         render() {
             if (this.state.user) {
                 return (
-                    <AuthComponent history={this.props.history} user={this.state.user} match={this.props.match} />
+                    <AuthComponent socket={socket} history={this.props.history} user={this.state.user} match={this.props.match} />
                 );
             }
             else {

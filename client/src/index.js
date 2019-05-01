@@ -12,7 +12,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
-import CanvasGame from './components/CanvasGame';
+import Game from './pages/Game';
 import Events from './pages/Events';
 
 // Our authorization service for locked content
@@ -32,7 +32,7 @@ ReactDOM.render(
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile" component={withAuth(Profile)} />
-            <Route exact path="/game" component={withAuth(CanvasGame)} />
+            <Route exact path="/game" component={withAuth(Game)} />
             <Route exact path="/events" component={withAuth(Events)} />
         </div>
     </Router>
