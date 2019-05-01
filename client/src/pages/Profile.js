@@ -7,7 +7,8 @@ class Profile extends Component {
 
   state = {
     username: "",
-    email: ""
+    email: "",
+    articles: []
   };
 
   componentDidMount() {
@@ -17,6 +18,11 @@ class Profile extends Component {
         email: res.data.email
       })
     });
+
+    API.getsavedArticles()
+       .then(res => {
+        this.setState({ articles: res.data })
+        })
   }
 
   render() {
@@ -26,6 +32,13 @@ class Profile extends Component {
         <p>Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
         <Link to="/">Go home</Link>
+
+        <div className="savedArticles">
+          {this.state.articles.map(article => (
+            <h1>{article.title}</h1>
+          ))}
+         
+        </div>
       </div>
     )
   }

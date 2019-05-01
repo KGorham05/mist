@@ -45,6 +45,12 @@ app.post("/api/articles/:articleId", (req, res) => {
   db.Article
     .findOneAndUpdate({_id: req.params.articleId}, {saved: true}, {new: true})
     .then(dbArticle => res.json(dbArticle))
+});
+//Get saved articles for the profile page
+app.get("/saved", (req, res) => {
+  db.Article
+    .find({saved: true})
+    .then(dbArticles => res.json(dbArticles))
 })
 //SCRAPE route
 const cheerio = require("cheerio")
@@ -80,7 +86,6 @@ app.get("/scrape", (req, res) => {
       .create(post)
       .then(dbArticle => {
         console.log("added article to db")
-        
         
       })
       .catch(err => console.log(err))
