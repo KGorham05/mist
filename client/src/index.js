@@ -12,6 +12,8 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
+import CanvasGame from './components/CanvasGame';
+
 import Events from './pages/Events';
 // Here is if we have an id_token in localStorage
 if(localStorage.getItem("id_token")) {
@@ -27,6 +29,7 @@ ReactDOM.render(
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/game" component={CanvasGame} />
             <Route exact path="/events" component={Events} />
         </div>
     </Router>
