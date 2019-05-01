@@ -39,6 +39,13 @@ app.get("/api/articles", (req, res) => {
     .then(dbArticle => res.json(dbArticle))
     .catch(err => res.json(err))
 })
+//save an article
+app.post("/api/articles/:articleId", (req, res) => {
+  console.log("worked")
+  db.Article
+    .findOneAndUpdate({_id: req.params.articleId}, {saved: true}, {new: true})
+    .then(dbArticle => res.json(dbArticle))
+})
 //SCRAPE route
 const cheerio = require("cheerio")
 const axios = require("axios")
@@ -73,6 +80,7 @@ app.get("/scrape", (req, res) => {
       .create(post)
       .then(dbArticle => {
         console.log("added article to db")
+        
         
       })
       .catch(err => console.log(err))
@@ -174,11 +182,11 @@ io.on('connection', function (socket) {
 setInterval(function () {
   for (var prey in players) {
     if (prey == predatorId) continue //same id, not self is not prey
-    console.log(
-      Math.sqrt(
-        Math.pow(players[predatorId].x - players[prey].x, 2) +
-        Math.pow(players[predatorId].y - players[prey].y, 2))
-    )
+    // console.log(
+    //   Math.sqrt(
+    //     Math.pow(players[predatorId].x - players[prey].x, 2) +
+    //     Math.pow(players[predatorId].y - players[prey].y, 2))
+    // )
     if ((Math.sqrt(
       Math.pow(players[predatorId].x - players[prey].x, 2) +
       Math.pow(players[predatorId].y - players[prey].y, 2)) < 20)

@@ -73,7 +73,7 @@
 .navbar a {
     color: white;
 }
-.articles .btn {
+.articles .scrape {
     background:rgba(25, 131, 100, 0.9);
     border: 2px solid white;
 }
@@ -100,16 +100,17 @@
     background-color: #000;
     border: 1px solid black;
     opacity: 0.8;
-    display: none
+    display: none;
+    text-align: center;
   }
 .card-img-overlay:hover .transbox  {
     display: block;
 }
 
 .transbox p {
-    margin: 5%;
     font-weight: bold;
     color: #fff;
+    margin-bottom: 0px;
   }
 .card-title {
     background: rgba(25, 131, 100, 0.9);
@@ -142,4 +143,20 @@
 .home-title {
     font-size: 90px;
     padding-top: 25vh;
+}
+.save {
+    margin-top: 0;
+    margin-bottom: 10px;
+    background: coral;
+    color: white;
+}
+.read {
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-right:  10px;
+    background: rgb(45, 157, 226);
+    color: white;
+}
+.save:hover {
+    border: 1px solid white;
 }
