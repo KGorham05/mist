@@ -130,8 +130,9 @@ io.on('connection', function (socket) {
   // CHAT LOGIC
   
   socket.on('new message', (data) => {
+    console.log(`Server received new message`)
     // we tell the client to execute 'new message'
-    socket.broadcast.emit('new message', {
+    socket.emit('new message', {
       message: data
     });
   });

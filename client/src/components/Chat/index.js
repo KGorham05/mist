@@ -10,10 +10,22 @@ class Chat extends Component {
 
 
 
-    componentDidMount() {
-        this.socket.on('new message', (data) => {
-            this.setState({ messages: this.state.messages.push(data) });
-          });
+    componentDidMount = () => {
+        // this function not working 
+        this.socket.on('new message', data => {
+            console.log('Made it back to client, receved server emit new message')
+            this.displayMessage(data);
+        });
+
+        // listen for ENTER key press
+        // send message event 
+        document.addEventListener("keydown", event => {
+            if (event.which === 13) {
+                this.socket.emit('new message', this.state.message)
+                console.log(`Message to be sent: ${this.state.message}`)
+                console.log("Enter key pressed")
+            }
+        })
     }
 
     handleInputChange = event => {
@@ -23,6 +35,7 @@ class Chat extends Component {
         this.setState({
             [name]: value
         });
+        console.log(`Current message: ${this.state.message}`)
     };
 
     sendMessageToServer() {
@@ -31,18 +44,23 @@ class Chat extends Component {
         }
     }
 
-    displayMessage() {
-        
+    displayMessage(data) {
+        // update the state so that it gets automatically re-rendered 
+        this.setState(prevState => ({
+            messages: [...prevState.messages, data]
+        }))
     }
 
     render() {
         return (
             <div>
                 <div className="chatArea">
-                    <ul className="messages">{this.state.messages.map(msg => 
-                        <p>{msg}</p>)}</ul>
+                    <ul className="messages">
+                        {this.state.messages.map(msg =>  
+                        <li>{msg.message}</li>)}
+                    </ul>
                 </div>
-                <input className="inputMessage" name="message" value={this.state.message}placeholder="Type here..." onChange={this.handleInputChange} />
+                <input className="inputMessage" name="message" value={this.state.message} placeholder="Type here..." onChange={this.handleInputChange} />
             </div>
         )
     }
