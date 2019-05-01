@@ -9,8 +9,6 @@ class Chat extends Component {
         messages: []
     };
 
-
-
     componentDidMount = () => {
         // this function not working 
         this.socket.on('new message', data => {

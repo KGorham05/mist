@@ -6,14 +6,13 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from "axios";
-import openSocket from "socket.io-client"
 
 // Our Components
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
-import CanvasGame from './components/CanvasGame';
+import Game from './pages/Game';
 import Events from './pages/Events';
 
 // Our authorization service for locked content
@@ -25,8 +24,6 @@ if(localStorage.getItem("id_token")) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
 }
 
-const socket= openSocket()
-
 ReactDOM.render(
     <Router>
         <div>
@@ -35,7 +32,7 @@ ReactDOM.render(
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile" component={withAuth(Profile)} />
-            <Route exact path="/game" component={withAuth(CanvasGame)} />
+            <Route exact path="/game" component={withAuth(Game)} />
             <Route exact path="/events" component={withAuth(Events)} />
         </div>
     </Router>
