@@ -44,7 +44,7 @@ class Login extends Component {
             <div className="form-group">
               <label htmlFor="email">Email address:</label>
               <input className="form-control"
-                placeholder="Email goes here..."
+                placeholder="Email"
                 name="email"
                 type="email"
                 id="email"
@@ -53,7 +53,7 @@ class Login extends Component {
             <div className="form-group">
               <label htmlFor="pwd">Password:</label>
               <input className="form-control"
-                placeholder="Password goes here..."
+                placeholder="Password"
                 name="password"
                 type="password"
                 id="pwd"

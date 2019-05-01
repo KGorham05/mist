@@ -43,7 +43,7 @@ class Signup extends Component {
             <div className="form-group">
               <label htmlFor="username">Username:</label>
               <input className="form-control"
-                placeholder="Username goes here..."
+                placeholder="Username"
                 name="username"
                 type="text"
                 id="username"
@@ -52,7 +52,7 @@ class Signup extends Component {
             <div className="form-group">
               <label htmlFor="email">Email address:</label>
               <input className="form-control"
-                placeholder="Email goes here..."
+                placeholder="Email"
                 name="email"
                 type="email"
                 id="email"
