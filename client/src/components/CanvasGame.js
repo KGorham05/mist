@@ -10,8 +10,7 @@ class CanvasGame extends Component {
         right: false
     }
 
-    componentDidMount = () => {
-
+    componentDidMount() {
         this.socket.emit('new player');
         setInterval(() => {
             this.socket.emit('movement', this.state);

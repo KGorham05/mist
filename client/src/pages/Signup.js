@@ -20,8 +20,14 @@ class Signup extends Component {
     API.signUpUser(this.state.username, this.state.email, this.state.password)
       .then(res => {
         // once the user has signed up
-        // send them to the login page
-        this.props.history.replace('/login');
+        // log them in and take them to their profile page
+        this.Auth.login(this.state.email, this.state.password)
+          .then(res => {
+            window.location.reload();
+          })
+          .catch(err => {
+            alert(err.response.data.message)
+          });
       })
       .catch(err => alert(err));
   };
@@ -69,7 +75,7 @@ class Signup extends Component {
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
-          <p><Link to="/login">Go to Login</Link></p>
+          <Link to="/login" className="btn btn-success">Go to Login</Link>
         </div>
       </div>
     );
