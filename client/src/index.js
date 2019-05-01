@@ -6,6 +6,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from "axios";
+import openSocket from "socket.io-client"
 
 // Our Components
 import Login from './pages/Login';
@@ -24,6 +25,7 @@ if(localStorage.getItem("id_token")) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
 }
 
+const socket= openSocket()
 
 ReactDOM.render(
     <Router>

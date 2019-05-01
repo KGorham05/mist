@@ -21,7 +21,7 @@ export default function withAuth(AuthComponent) {
                         user: profile
                     });
                 }
-                catch(err){
+                catch (err) {
                     Auth.logout();
                     this.props.history.replace('/signup');
                 }
@@ -30,9 +30,15 @@ export default function withAuth(AuthComponent) {
 
         render() {
             if (this.state.user) {
-                return (
-                    <AuthComponent history={this.props.history} user={this.state.user} match={this.props.match} />
-                );
+                if (this.props.route) {
+                    return (
+                        <AuthComponent socket={this.props.route.socket} history={this.props.history} user={this.state.user} match={this.props.match} />
+                    );
+                } else {
+                    return (
+                        <AuthComponent history={this.props.history} user={this.state.user} match={this.props.match} />
+                    );
+                }
             }
             else {
                 return null;

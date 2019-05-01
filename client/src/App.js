@@ -26,7 +26,6 @@ class App extends Component {
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
         </p>
       </div>
-      
     );
   }
 }
