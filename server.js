@@ -177,8 +177,10 @@ io.on('connection', function (socket) {
   socket.on('new message', (data) => {
     console.log(`Server received new message`)
     // we tell the client to execute 'new message'
-    socket.emit('new message', {
-      message: data
+    console.log(data)
+    io.emit('new message', {
+      message: data.message,
+      username: data.username
     });
   });
 
@@ -188,11 +190,11 @@ io.on('connection', function (socket) {
 setInterval(function () {
   for (var prey in players) {
     if (prey == predatorId) continue //same id, not self is not prey
-    console.log(
-      Math.sqrt(
-        Math.pow(players[predatorId].x - players[prey].x, 2) +
-        Math.pow(players[predatorId].y - players[prey].y, 2))
-    )
+    // console.log(
+    //   Math.sqrt(
+    //     Math.pow(players[predatorId].x - players[prey].x, 2) +
+    //     Math.pow(players[predatorId].y - players[prey].y, 2))
+    // )
     if ((Math.sqrt(
       Math.pow(players[predatorId].x - players[prey].x, 2) +
       Math.pow(players[predatorId].y - players[prey].y, 2)) < 20)

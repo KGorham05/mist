@@ -33,7 +33,7 @@ class App extends Component {
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
         </p>
         <CanvasGame socket={socket} />
-        <Chat socket={socket} />
+        <Chat username={this.props.user.username} socket={socket} />
       </div>
     );
   }

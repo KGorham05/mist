@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class Chat extends Component {
     socket = this.props.socket
@@ -13,19 +14,16 @@ class Chat extends Component {
     componentDidMount = () => {
         // this function not working 
         this.socket.on('new message', data => {
-            console.log('Made it back to client, receved server emit new message')
+            console.log('display message was hit');
             this.displayMessage(data);
         });
+    }
 
-        // listen for ENTER key press
-        // send message event 
-        document.addEventListener("keydown", event => {
-            if (event.which === 13) {
-                this.socket.emit('new message', this.state.message)
-                console.log(`Message to be sent: ${this.state.message}`)
-                console.log("Enter key pressed")
-            }
-        })
+    sendMessage = e => {
+        console.log("Enter key pressed");
+        e.preventDefault();
+        this.socket.emit('new message', {message: this.state.message, username: this.props.username});
+        this.setState({message: ""});
     }
 
     handleInputChange = event => {
@@ -38,29 +36,26 @@ class Chat extends Component {
         console.log(`Current message: ${this.state.message}`)
     };
 
-    sendMessageToServer() {
-        if (this.state.message) {
-            this.socket.emit('new message', this.state.message)
-        }
-    }
-
     displayMessage(data) {
         // update the state so that it gets automatically re-rendered 
-        this.setState(prevState => ({
-            messages: [...prevState.messages, data]
-        }))
+        this.setState({
+            messages: [...this.state.messages, data]
+        })
     }
 
     render() {
         return (
-            <div>
-                <div className="chatArea">
+            <div className="chatComponent">
+                <div className="messageArea">
                     <ul className="messages">
-                        {this.state.messages.map(msg =>  
-                        <li>{msg.message}</li>)}
+                        {this.state.messages.map((item, i) =>  
+                            <p key={i}>{`${item.username}:${item.message}`}</p>)}
                     </ul>
                 </div>
-                <input className="inputMessage" name="message" value={this.state.message} placeholder="Type here..." onChange={this.handleInputChange} />
+                <form onSubmit={this.sendMessage}>
+                    <input className="inputMessage" name="message" value={this.state.message} placeholder="Type here..." onChange={this.handleInputChange} />
+                    <button type="submit">Send</button>
+                </form>
             </div>
         )
     }
