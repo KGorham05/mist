@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import AuthService from './components/AuthService';
-import withAuth from './components/withAuth';
-import CanvasGame from './components/CanvasGame';
-import Chat from './components/Chat'
-import openSocket from 'socket.io-client';
-
-const socket = openSocket('http://localhost:3001');
-
 const Auth = new AuthService();
 
 class App extends Component {
@@ -32,11 +25,9 @@ class App extends Component {
           <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
         </p>
-        <CanvasGame socket={socket} />
-        <Chat username={this.props.user.username} socket={socket} />
       </div>
     );
   }
 }
 
-export default withAuth(App);
+export default App;
