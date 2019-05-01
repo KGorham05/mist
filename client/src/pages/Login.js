@@ -40,7 +40,7 @@ class Login extends Component {
       <div className="login">
         <div className="container form">
           <h1>Login</h1>
-          <form onSubmit={this.handleFormSubmit}>
+          <form>
             <div className="form-group">
               <label htmlFor="email">Email address:</label>
               <input className="form-control"
@@ -59,9 +59,9 @@ class Login extends Component {
                 id="pwd"
                 onChange={this.handleChange} />
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
           </form>
-          <p><Link to="/signup">Go to Signup</Link></p>
+          <Link to="/" className="btn btn-success" onClick={this.handleFormSubmit}>Submit</Link>
+          <Link to="/signup" className="btn btn-primary">Go to Signup</Link>
         </div>
       </div>
     );

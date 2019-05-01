@@ -18,11 +18,6 @@ class Signup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     API.signUpUser(this.state.username, this.state.email, this.state.password)
-      .then(res => {
-        // once the user has signed up
-        // send them to the login page
-        this.props.history.replace('/login');
-      })
       .catch(err => alert(err));
   };
 
@@ -39,7 +34,7 @@ class Signup extends Component {
         <div className="container form">
 
           <h1>Signup</h1>
-          <form onSubmit={this.handleFormSubmit}>
+          <form>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
               <input className="form-control"
@@ -67,9 +62,9 @@ class Signup extends Component {
                 id="pwd"
                 onChange={this.handleChange} />
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
           </form>
-          <p><Link to="/login">Go to Login</Link></p>
+          <Link to="/login" onClick={this.handleFormSubmit} className="btn btn-primary">Submit</Link>
+          <Link to="/login" className="btn btn-success">Go to Login</Link>
         </div>
       </div>
     );
