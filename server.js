@@ -32,8 +32,53 @@ mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', { useNewUrlParser: true, useCreateIndex: true })
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => console.error(err));
-
-
+//get news articles from the database route
+app.get("/api/articles", (req, res) => {
+  db.Article
+    .find({}).limit(12)
+    .then(dbArticle => res.json(dbArticle))
+    .catch(err => res.json(err))
+})
+//SCRAPE route
+const cheerio = require("cheerio")
+const axios = require("axios")
+app.get("/scrape", (req, res) => {
+//  axios.get("https://pokemongolive.com/en/post/").then(function(response){
+//   //console.log("test passed")
+//   var $ = cheerio.load(response.data);
+//   var results = [];
+//   $("div.post-list__title").each(function(i, element) {
+    
+//     var update = $(element).find("a").text()
+//     console.log(update)
+//   })
+//  })
+ axios.get("http://www.nintendolife.com/pokemon/news").then(function(response) {
+  var $ = cheerio.load(response.data)
+  
+  $("li.item-article").each(function(i, element) {
+    var title = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").find("span.title").text()
+    var image = $(element).find("div.item-wrap").find("div.image").find("a").find("img").attr("src");
+    var summary = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.text").text()
+    var link = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").attr("href")
+    link = "https://nintendolife.com/" + link
+    //console.log(image)
+    let post = {
+      title: title,
+      image: image,
+      summary: summary,
+      link: link
+    }
+    db.Article
+      .create(post)
+      .then(dbArticle => {
+        console.log("added article to db")
+        
+      })
+      .catch(err => console.log(err))
+  })
+ })
+})
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {
   auth
