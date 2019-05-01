@@ -18,6 +18,11 @@ class Login extends Component {
     event.preventDefault();
 
     this.Auth.login(this.state.email, this.state.password)
+      .then(res => {
+        // once user is logged in
+        // take them to their profile page
+        this.props.history.replace(`/profile`);
+      })
       .catch(err => {
         alert(err.response.data.message)
       });
@@ -35,7 +40,7 @@ class Login extends Component {
       <div className="login">
         <div className="container form">
           <h1>Login</h1>
-          <form>
+          <form onSubmit={this.handleFormSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email address:</label>
               <input className="form-control"
@@ -54,9 +59,9 @@ class Login extends Component {
                 id="pwd"
                 onChange={this.handleChange} />
             </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
           </form>
-          <Link to="/" className="btn btn-success" onClick={this.handleFormSubmit}>Submit</Link>
-          <Link to="/signup" className="btn btn-primary">Go to Signup</Link>
+          <p><Link to="/signup" className="btn btn-success">Go to Signup</Link></p>
         </div>
       </div>
     );
