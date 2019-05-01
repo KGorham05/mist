@@ -7,6 +7,8 @@
     position: relative;
     top: -15px;
     right: 200px;
+    text-align: left;
+    
 }
 
 .messageArea {
@@ -14,4 +16,13 @@
     width: 100%;
     border: 2px solid black;
     overflow-y: scroll; overflow-x:hidden;
+    padding: 5px;
+}
+
+.messages {
+    padding-left: 2px;
+}
+
+#userNameText {
+    color: red;
 }

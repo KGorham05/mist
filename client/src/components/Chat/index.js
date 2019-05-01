@@ -49,7 +49,7 @@ class Chat extends Component {
                 <div className="messageArea">
                     <ul className="messages">
                         {this.state.messages.map((item, i) =>  
-                            <p key={i}>{`${item.username}:${item.message}`}</p>)}
+                            <p key={i}><span id="userNameText">{`${item.username}`}</span>{`: ${item.message}`}</p>)}
                     </ul>
                 </div>
                 <form onSubmit={this.sendMessage}>
