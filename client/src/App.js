@@ -18,7 +18,7 @@ class App extends Component {
           <h2>Welcome {this.props.user.email}</h2>
         </div>
         <p className="App-intro">
-          <Link to="/profile" className="btn btn-primary">Go to Profile</Link>
+          <Link to="/" className="btn btn-primary">Go to Profile</Link>
           <Link to="/signup" className="btn btn-danger" onClick={this.handleLogout}>Logout</Link>
         </p>
       </div>
