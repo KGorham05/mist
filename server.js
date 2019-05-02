@@ -84,13 +84,21 @@ app.get("/scrape", (req, res) => {
     }
     db.Article
       .create(post)
-      .then(dbArticle => {
+      .then(() => {
         console.log("added article to db")
-        
       })
       .catch(err => console.log(err))
   })
  })
+})
+
+//clear scraped articles 
+app.get("/api/clear", (req, res) => {
+  db.Article
+    .deleteMany({saved: false}, function() {
+      console.log("cleared")
+    })
+    .then(()=>res.redirect("/events"))
 })
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {

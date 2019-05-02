@@ -14,8 +14,10 @@ export default {
   //scrape code
   scrape: () => {
     axios.get("/scrape").then(res => console.log("scraped"))
-   
     },
+  clear: () => {
+    return axios.get("/api/clear")
+  },
   getAllArticles: function(){
     return axios.get("/api/articles")
   },

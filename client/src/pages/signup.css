@@ -159,7 +159,7 @@
     padding-top: 40px;
 }
 iframe {
-    margin-top: 2%
+    margin-top: 2%;
 }
 .profileBtns {
     position: absolute;
@@ -183,6 +183,11 @@ iframe {
     font-size: 90px;
     padding-top: 25vh;
     /* font-family: 'VT323', monospace; */
+}
+.clear {
+    background: coral;
+    border: 2px solid white;
+    margin-left: 20px;
 }
 .save {
     margin-top: 0;

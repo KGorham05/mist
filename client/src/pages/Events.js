@@ -20,6 +20,10 @@ class Events extends React.Component {
         API.scrape()
     }
 
+    handleClear() {
+        API.clear()
+    }
+
     handleSave(id) {
         API.saveArticle(id)
     }
@@ -31,6 +35,7 @@ class Events extends React.Component {
                     <h1 className="home-title">Pokemon News</h1>
                     <h2 className="home-subtitle">NintendoLife Edition</h2>
                     <button className="btn btn-primary scrape" onClick={this.handleScrape}>Scrape</button>
+                    <button className="btn btn-primary clear" onClick={this.handleClear}>Clear</button>
                 </div>
                 {/* Articles */}
                 <div className="articles row">
