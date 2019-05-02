@@ -221,3 +221,10 @@ canvas {
     background-position: center bottom;
     /* box-shadow: 0 3000px rgba(0, 0, 0, 0.4) inset; */
 }
+
+#welcome-text {
+    float: right;
+    color: white;
+    text-shadow: 1px 2px #000000;
+    
+}
