@@ -32,7 +32,7 @@ mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', { useNewUrlParser: true, useCreateIndex: true })
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => console.error(err));
-//get news articles from the database route
+//get all news articles from the database 
 app.get("/api/articles", (req, res) => {
   db.Article
     .find({}).limit(12)

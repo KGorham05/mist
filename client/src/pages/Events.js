@@ -36,12 +36,9 @@ class Events extends React.Component {
                 <div className="articles row">
                     {this.state.articles.map(article => (
                         <div className="card bg-dark text-white col-md-4">
-                            
                                 <h3 className="card-title">
                                     {article.title}
                                 </h3>
-
-                            
                             <img src={article.image} className="card-img" alt="article img"></img>
 
                             <div className="card-img-overlay">
