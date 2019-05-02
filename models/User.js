@@ -25,7 +25,13 @@ const UserSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  }, 
+  articles: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Article"
+    }
+  ]
 });
 
 // Execute before each user.save() call

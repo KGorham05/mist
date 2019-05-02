@@ -206,7 +206,8 @@ iframe {
     border: 1px solid rgba(32, 165, 98);
     height: 91.7vh;
     width: 100vw;
-    margin: 0;
+    padding-left: 0.7%;
+    padding-right: 0.7%;
 }
 canvas {
     background: url("https://vignette.wikia.nocookie.net/pokemon-planet/images/8/8e/Kanto_Pewter_City_Map.png/revision/latest?cb=20160823031028");
