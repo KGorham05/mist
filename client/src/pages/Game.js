@@ -5,7 +5,7 @@ import Chat from '../components/Chat'
 function Game(props) {
 
     return (
-        <div>
+        <div class="game">
             <CanvasGame socket={props.socket} />
             <Chat username={props.user.username} socket={props.socket} />
         </div>
