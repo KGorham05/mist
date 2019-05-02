@@ -12,24 +12,28 @@ class Events extends React.Component {
         API.getAllArticles()
             .then(res => {
                 this.setState({ articles: res.data })
-                console.log(this.state.articles)
             })
     }
 
-    handleScrape(){
-        API.scrape()
-        
+    handleScrape = () => {
+        API.scrape().then(() => {
+            API.getAllArticles()
+                .then(res => {
+                    this.setState({ articles: res.data })
+                    console.log(this)
+                })
+        })
+
     }
-    
+
     handleClear = () => {
         API.clear().then(() => {
             API.getAllArticles()
-            .then(res => {
-                this.setState({ articles: res.data })
-                console.log(this)
-            })
+                .then(res => {
+                    this.setState({ articles: res.data })
+                })
         })
-        
+
     }
     handleSave(id) {
         API.saveArticle(id)
@@ -48,9 +52,9 @@ class Events extends React.Component {
                 <div className="articles row">
                     {this.state.articles.map(article => (
                         <div className="card bg-dark text-white col-md-4">
-                                <h3 className="card-title">
-                                    {article.title}
-                                </h3>
+                            <h3 className="card-title">
+                                {article.title}
+                            </h3>
                             <img src={article.image} className="card-img" alt="article img"></img>
 
                             <div className="card-img-overlay">

@@ -76,7 +76,7 @@ app.get("/scrape", (req, res) => {
       db.Article
         .create(post)
         .then((dbArticles) => {
-          res.json(dbArticles)
+          res.send(dbArticles)
         })
         .catch(err => console.log(err))
     })
