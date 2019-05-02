@@ -75,7 +75,9 @@ class Signup extends Component {
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
-          <Link to="/login" className="btn btn-success">Go to Login</Link>
+          <p>Already have an account?  
+          <Link to="/login" className="btn btn-success">Login</Link>
+          </p>
         </div>
       </div>
     );

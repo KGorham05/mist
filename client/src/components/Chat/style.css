@@ -1,13 +1,12 @@
 .chatComponent {
     height: 600px;
     width: 300px;
-    margin: 15px;
     border: 2px solid black;
     float: right;
     position: relative;
-    top: -15px;
-    right: 200px;
+    right: 50px;
     text-align: left;
+    margin-top: 35px
     
 }
 

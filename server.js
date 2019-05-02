@@ -32,52 +32,66 @@ mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', { useNewUrlParser: true, useCreateIndex: true })
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => console.error(err));
-//get news articles from the database route
+//get all news articles from the database 
 app.get("/api/articles", (req, res) => {
   db.Article
     .find({}).limit(12)
     .then(dbArticle => res.json(dbArticle))
     .catch(err => res.json(err))
 })
+//save an article
+app.post("/api/articles/:articleId", (req, res) => {
+  console.log("worked")
+  db.Article
+    .findOneAndUpdate({ _id: req.params.articleId }, { saved: true }, { new: true })
+    .then(dbArticle => res.json(dbArticle))
+});
+//Get saved articles for the profile page
+app.get("/saved", (req, res) => {
+  db.Article
+    .find({ saved: true })
+    .then(dbArticles => res.json(dbArticles))
+})
 //SCRAPE route
 const cheerio = require("cheerio")
 const axios = require("axios")
 app.get("/scrape", (req, res) => {
-//  axios.get("https://pokemongolive.com/en/post/").then(function(response){
-//   //console.log("test passed")
-//   var $ = cheerio.load(response.data);
-//   var results = [];
-//   $("div.post-list__title").each(function(i, element) {
-    
-//     var update = $(element).find("a").text()
-//     console.log(update)
-//   })
-//  })
- axios.get("http://www.nintendolife.com/pokemon/news").then(function(response) {
-  var $ = cheerio.load(response.data)
-  
-  $("li.item-article").each(function(i, element) {
-    var title = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").find("span.title").text()
-    var image = $(element).find("div.item-wrap").find("div.image").find("a").find("img").attr("src");
-    var summary = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.text").text()
-    var link = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").attr("href")
-    link = "https://nintendolife.com/" + link
-    //console.log(image)
-    let post = {
-      title: title,
-      image: image,
-      summary: summary,
-      link: link
-    }
-    db.Article
-      .create(post)
-      .then(dbArticle => {
-        console.log("added article to db")
-        
-      })
-      .catch(err => console.log(err))
+
+  axios.get("http://www.nintendolife.com/pokemon/news").then(function (response) {
+    var $ = cheerio.load(response.data)
+
+    $("li.item-article").each(function (i, element) {
+      var title = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").find("span.title").text()
+      var image = $(element).find("div.item-wrap").find("div.image").find("a").find("img").attr("src");
+      var summary = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.text").text()
+      var link = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").attr("href")
+      link = "https://nintendolife.com/" + link
+      
+      let post = {
+        title: title,
+        image: image,
+        summary: summary,
+        link: link
+      }
+      db.Article
+        .create(post)
+        .then((dbArticles) => {
+          res.send(dbArticles)
+        })
+        .catch(err => console.log(err))
+    })
   })
- })
+})
+
+//clear scraped articles 
+app.get("/api/clear", (req, res) => {
+  db.Article
+    .deleteMany({ saved: false })
+    .then((dbArticles) => {
+      console.log(dbArticles)
+      res.json(dbArticles)
+        }
+    )
 })
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {
@@ -132,9 +146,47 @@ var players = {};		//keys are socketId, values for player are data objects
 predatorId = 0
 lastPredatorId = 0
 
+
 io.on('connection', function(socket) {
-	// CHAT LOGIC
-  
+	
+  socket.on('new player', function () {
+    console.log("contents of players, ", players);
+
+    if (isEmpty(players)) {
+      players[socket.id] = {
+        x: 800 * Math.random(),
+        y: 600 * Math.random(),
+        predator: true,
+        lastPredator: false
+      };
+      predatorId = socket.id;
+      lastPredatorId = socket.id;
+    } else {
+      players[socket.id] = {
+        x: 800 * Math.random(),
+        y: 600 * Math.random(),
+        predator: false,
+        lastPredator: false
+      };
+    }
+  });
+  socket.on('movement', function (data) {
+    var player = players[socket.id] || {};
+    if (data.left) {
+      player.x -= 5;
+    }
+    if (data.up) {
+      player.y -= 5;
+    }
+    if (data.right) {
+      player.x += 5;
+    }
+    if (data.down) {
+      player.y += 5;
+    }
+  });
+
+  // CHAT LOGIC
   socket.on('new message', (data) => {
     console.log(`Server received new message`)
     // we tell the client to execute 'new message'

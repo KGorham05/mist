@@ -177,7 +177,9 @@ function getSrcY(facing){
                 {
                     width: "800px",
                     height: "600px",
-                    border: "5px solid black"
+                    border: "5px solid black",
+                    marginLeft: "15px",
+                    marginTop: "35px"
                 }
             } />
     }
