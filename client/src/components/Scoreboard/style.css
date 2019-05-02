@@ -4,6 +4,16 @@
     margin: 15px;
     border: 2px solid black;
     float: left;
-    margin-top: 35px      
+    margin-top: 35px;
+    text-align: center;   
+    padding: 10px
     
+}
+
+#rules {
+    
+}
+
+.text-rules {
+    text-align: left;
 }
