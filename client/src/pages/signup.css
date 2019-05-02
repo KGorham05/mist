@@ -196,22 +196,22 @@ iframe {
 }
 
 .game {
-    background: url("https://i.gifer.com/LvDU.gif");
+    /* background: url("https://i.gifer.com/LvDU.gif");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center bottom;
+    background-position: center bottom; */
     border: 1px solid rgba(32, 165, 98);
     height: 91.7vh;
     width: 100vw;
     margin: 0;
 }
 canvas {
-    /* background: url("https://vignette.wikia.nocookie.net/pokemon-planet/images/8/8e/Kanto_Pewter_City_Map.png/revision/latest?cb=20160823031028"); */
+    background: url("https://vignette.wikia.nocookie.net/pokemon-planet/images/8/8e/Kanto_Pewter_City_Map.png/revision/latest?cb=20160823031028");
     /* background: url("https://wallup.net/wp-content/uploads/2016/05/24/143432-nature-Pokemon-748x468.jpg"); */
-    background: url("https://images7.alphacoders.com/662/662102.png");
+    /* background: url("https://images7.alphacoders.com/662/662102.png"); */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
