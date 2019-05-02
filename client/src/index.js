@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
@@ -28,10 +27,9 @@ ReactDOM.render(
     <Router>
         <div>
             <Navbar />
-            <Route exact path="/" component={withAuth(App)} />
+            <Route exact path="/" component={withAuth(Profile)} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/profile" component={withAuth(Profile)} />
             <Route exact path="/game" component={withAuth(Game)} />
             <Route exact path="/events" component={withAuth(Events)} />
         </div>
