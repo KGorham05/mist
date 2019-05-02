@@ -5,7 +5,7 @@ import Scoreboard from '../components/Scoreboard'
 
 function Game(props) {
     return (
-        <div>
+        <div className="game">
             <Scoreboard />
             <CanvasGame socket={props.socket} />
             <Chat username={props.user.username} socket={props.socket} />

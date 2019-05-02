@@ -1,7 +1,6 @@
 .chatComponent {
     height: 600px;
     width: 300px;
-    margin: 15px;
     border: 2px solid black;
     float: right;
     position: relative;
