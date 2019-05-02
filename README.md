@@ -1,6 +1,6 @@
 # Elite4 Pokemon Fan Game
 
-## This is a Fan Game
+## [This](#) is a Fan Game
 
 We created it as a fun way to practice and edify ourselves in the art of web design, using the [boilerplate provided to our class]().
 Also in our learning, we relied upon the excellent game examples from [omgimanerd's Github](https://github.com/omgimanerd/how-to-build-a-multiplayer-browser-game), found through [this article](https://hackernoon.com/how-to-build-a-multiplayer-browser-game-4a793818c29b).
