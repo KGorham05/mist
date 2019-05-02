@@ -11,7 +11,7 @@ class CanvasGame extends Component {
 		fire: false
     }
     keyDown = (event) => {
-        console.log(event.keyCode);
+		event.preventDefault();
         switch (event.keyCode) {
             case 65: // A
                 this.setState({ left: true });
@@ -83,10 +83,11 @@ var currentFrame = 0;
 var bulb = new Image();
 var pika = new Image();
 var char = new Image();
-bulb.src = "/static/bulb.png";
-pika.src = "/static/pika.png";
-char.src = "/static/char.png";
-socket.on('state', function (obj) {
+bulb.src = "/bulb.png";
+pika.src = "/pika.png";
+char.src = "/char.png";
+this.socket.on('state', function (obj) {
+	console.log(obj.players);
 	context.clearRect(0, 0, 800, 600);
 	for (var id in obj.players) {
 		var player = obj.players[id];
@@ -136,7 +137,7 @@ function getSrcY(facing){
 
 
 
-	setInterval(function () {
+	setInterval(() => {
 	//calc facing
 		if(this.state.right){
 			if(this.state.up){
@@ -165,7 +166,7 @@ function getSrcY(facing){
 		}else{
 			this.setState({facing: "else"});
 		}
-	socket.emit('movement', this.state);
+	this.socket.emit('movement', this.state);
 	}, 1000 / 60);
 	    
 

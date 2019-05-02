@@ -149,42 +149,7 @@ lastPredatorId = 0
 
 io.on('connection', function(socket) {
 	
-  socket.on('new player', function () {
-    console.log("contents of players, ", players);
 
-    if (isEmpty(players)) {
-      players[socket.id] = {
-        x: 800 * Math.random(),
-        y: 600 * Math.random(),
-        predator: true,
-        lastPredator: false
-      };
-      predatorId = socket.id;
-      lastPredatorId = socket.id;
-    } else {
-      players[socket.id] = {
-        x: 800 * Math.random(),
-        y: 600 * Math.random(),
-        predator: false,
-        lastPredator: false
-      };
-    }
-  });
-  socket.on('movement', function (data) {
-    var player = players[socket.id] || {};
-    if (data.left) {
-      player.x -= 5;
-    }
-    if (data.up) {
-      player.y -= 5;
-    }
-    if (data.right) {
-      player.x += 5;
-    }
-    if (data.down) {
-      player.y += 5;
-    }
-  });
 
   // CHAT LOGIC
   socket.on('new message', (data) => {
@@ -205,6 +170,7 @@ io.on('connection', function(socket) {
 
 
 	socket.on('new player', function() {
+		console.log(players);
 		if(isEmpty(players)){
 			predatorId = socket.id;
 			lastPredatorId = socket.id;
@@ -212,6 +178,7 @@ io.on('connection', function(socket) {
 		}else{
 			players[socket.id] = new Play(false);//set predator false 
 		}
+		console.log(players);
 	});
 
 	socket.on('movement', function(data) {
