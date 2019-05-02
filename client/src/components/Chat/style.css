@@ -4,10 +4,10 @@
     border: 2px solid black;
     float: right;
     position: relative;
-    right: 50px;
+    /* right: 50px; */
     text-align: left;
-    margin-top: 35px
-    
+    margin-top: 1%;
+    margin-left: 0;
 }
 
 .messageArea {

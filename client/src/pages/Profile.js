@@ -19,9 +19,11 @@ class Profile extends Component {
       })
     });
 
-    API.getsavedArticles()
+    API.getsavedArticles(this.props.user.id)
       .then(res => {
-        this.setState({ articles: res.data })
+        console.log(res.data[0].articles)
+        this.setState({ articles: res.data[0].articles })
+        
       })
   }
   handleDelete = function () {
