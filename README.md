@@ -2,7 +2,7 @@
 
 ## [This](#) is a Fan Game
 
-We created it as a fun way to practice and edify ourselves in the art of web design, using the [boilerplate provided to our class]().
+We created it as a fun way to practice and edify ourselves in the art of web design, using the [boilerplate provided to our class](https://github.com/Travo100/create-react-express-jwt).
 Also in our learning, we relied upon the excellent game examples from [omgimanerd's Github](https://github.com/omgimanerd/how-to-build-a-multiplayer-browser-game), found through [this article](https://hackernoon.com/how-to-build-a-multiplayer-browser-game-4a793818c29b).
 
 ## To Start and Edit A Local Copy:
