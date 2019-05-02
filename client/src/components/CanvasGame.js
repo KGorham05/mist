@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import openSocket from 'socket.io-client';
 
 class CanvasGame extends Component {
+    socket = this.props.socket;
 
     state = {
         up: false,
@@ -11,12 +11,10 @@ class CanvasGame extends Component {
     }
 
     componentDidMount() {
-        const socket = openSocket('http://localhost:3001');
-
-        socket.emit('new player');
+        this.socket.emit('new player');
         setInterval(() => {
-            socket.emit('movement', this.state);
-        }, 1000 / 20);
+            this.socket.emit('movement', this.state);
+        }, 1000 / 60);
 
         const canvas = this.refs.canvasGame;
         canvas.width = 800;
@@ -35,7 +33,7 @@ class CanvasGame extends Component {
 
         const context = canvas.getContext("2d");
 
-        socket.on('state', players => {
+        this.socket.on('state', players => {
             context.clearRect(0, 0, 800, 600);
 
             for (var id in players) {

@@ -146,6 +146,8 @@ app.use(function (err, req, res, next) {
   }
 });
 
+
+// Game logic 
 var players = {};
 predatorId = 0
 lastPredatorId = 0
@@ -190,6 +192,20 @@ io.on('connection', function (socket) {
       player.y += 5;
     }
   });
+
+  // CHAT LOGIC
+  
+  socket.on('new message', (data) => {
+    console.log(`Server received new message`)
+    // we tell the client to execute 'new message'
+    console.log(data)
+    io.emit('new message', {
+      message: data.message,
+      username: data.username
+    });
+  });
+
+
 });
 
 setInterval(function () {
@@ -226,7 +242,6 @@ function isEmpty(obj) {
   }
   return true;
 }
-
 
 // Send every request to the React app
 // Define any API routes before this runs

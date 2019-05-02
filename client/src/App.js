@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Link } from 'react-router-dom';
 import AuthService from './components/AuthService';
-import withAuth from './components/withAuth';
-import CanvasGame from './components/CanvasGame';
 const Auth = new AuthService();
 
 class App extends Component {
 
-
   handleLogout = () => {
     Auth.logout();
-    this.props.history.replace('/signup');
   };
 
-  goToEditProfile = () => {
-    this.props.history.replace('/profile');
-  };
-
-  render() {
+  render = () => {
     // console.log(process.env.REACT_APP_SECRET_CODE);
     return (
       <div className="App">
@@ -25,13 +18,12 @@ class App extends Component {
           <h2>Welcome {this.props.user.email}</h2>
         </div>
         <p className="App-intro">
-          <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
-          <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
+          <Link to="/profile" className="btn btn-primary">Go to Profile</Link>
+          <Link to="/signup" className="btn btn-danger" onClick={this.handleLogout}>Logout</Link>
         </p>
-        <CanvasGame />
       </div>
     );
   }
 }
 
-export default withAuth(App);
+export default App;

@@ -21,7 +21,7 @@ class Login extends Component {
       .then(res => {
         // once user is logged in
         // take them to their profile page
-        this.props.history.replace(`/profile`);
+        window.location.reload();
       })
       .catch(err => {
         alert(err.response.data.message)
@@ -61,7 +61,7 @@ class Login extends Component {
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
-          <p><Link to="/signup">Go to Signup</Link></p>
+          <p><Link to="/signup" className="btn btn-success">Go to Signup</Link></p>
         </div>
       </div>
     );
