@@ -40,17 +40,28 @@ app.get("/api/articles", (req, res) => {
     .catch(err => res.json(err))
 })
 //save an article
-app.post("/api/articles/:articleId", (req, res) => {
+app.post("/api/articles/:articleId/:userId", (req, res) => {
   console.log("worked")
   db.Article
     .findOneAndUpdate({ _id: req.params.articleId }, { saved: true }, { new: true })
+    .then(dbArticle => {
+      return db.User.findOneAndUpdate({_id: req.params.userId}, {$push: {articles: dbArticle._id}}, {new: true})
+    })
     .then(dbArticle => res.json(dbArticle))
+    
 });
 //Get saved articles for the profile page
-app.get("/saved", (req, res) => {
-  db.Article
-    .find({ saved: true })
-    .then(dbArticles => res.json(dbArticles))
+app.get("/saved/:userId", (req, res) => {
+  // db.Article
+  //   .find({ saved: true })
+  //   .then(dbArticles => res.json(dbArticles))
+  db.User
+    .find({_id: req.params.userId})
+    .populate("articles")
+    .then(dbArticles => {
+      console.log(dbArticles)
+      res.json(dbArticles)
+    })
 })
 //SCRAPE route
 const cheerio = require("cheerio")
@@ -59,27 +70,29 @@ app.get("/scrape", (req, res) => {
 
   axios.get("http://www.nintendolife.com/pokemon/news").then(function (response) {
     var $ = cheerio.load(response.data)
-
+    var array = [];
     $("li.item-article").each(function (i, element) {
       var title = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").find("span.title").text()
       var image = $(element).find("div.item-wrap").find("div.image").find("a").find("img").attr("src");
       var summary = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.text").text()
       var link = $(element).find("div.item-wrap").find("div.info").find("div.info-wrap").find("p.heading").find("a").attr("href")
       link = "https://nintendolife.com/" + link
-      
+
       let post = {
         title: title,
         image: image,
         summary: summary,
         link: link
       }
+      array.push(post);
       db.Article
-        .create(post)
-        .then((dbArticles) => {
-          res.send(dbArticles)
-        })
-        .catch(err => console.log(err))
+      .create(array)
+      .then((dbArticles) => {
+        res.json(dbArticles)
+      })
+      .catch(err => console.log(err))
     })
+    
   })
 })
 
@@ -90,7 +103,7 @@ app.get("/api/clear", (req, res) => {
     .then((dbArticles) => {
       console.log(dbArticles)
       res.json(dbArticles)
-        }
+    }
     )
 })
 // LOGIN ROUTE
