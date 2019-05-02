@@ -16,14 +16,21 @@ class Events extends React.Component {
             })
     }
 
-    handleScrape() {
+    handleScrape(){
         API.scrape()
+        
     }
-
-    handleClear() {
-        API.clear()
+    
+    handleClear = () => {
+        API.clear().then(() => {
+            API.getAllArticles()
+            .then(res => {
+                this.setState({ articles: res.data })
+                console.log(this)
+            })
+        })
+        
     }
-
     handleSave(id) {
         API.saveArticle(id)
     }
