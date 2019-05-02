@@ -37,6 +37,9 @@
     width: 100vw;
     margin: 0;
 }
+.signUp a, .login a {
+    margin-left: 4px; 
+}
 .login {
     background: url("https://thumbs.gfycat.com/FrenchFastJaguar-max-1mb.gif");
     -webkit-background-size: cover;
@@ -51,21 +54,7 @@
     width: 100vw;
     margin: 0;
 }
-/* .Profile {
-    background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cad4b52e-f6b1-432f-9035-a5f4853bcf15/d7i3cm4-dc9f4577-6b7d-4d59-8b46-a15bf5e84209.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2NhZDRiNTJlLWY2YjEtNDMyZi05MDM1LWE1ZjQ4NTNiY2YxNVwvZDdpM2NtNC1kYzlmNDU3Ny02YjdkLTRkNTktOGI0Ni1hMTViZjVlODQyMDkuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.MAvFmljnNt5yawKRk7Tm-59pAkenmRqY3ZmzVmfsMjI");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    border: 1px solid rgba(25, 131, 100, 0.9);
-    box-shadow: 0 3000px rgba(0, 0, 0, 0.2) inset;
-    color: white;
-    height: 91.7vh;
-    width: 100vw;
-    margin: 0;
-} */
+
 .navbar {
     /* background: rgb(256, 256, 256, 0.1); */
     /* background: black; */
@@ -204,4 +193,18 @@ iframe {
 }
 .save:hover {
     border: 1px solid white;
+}
+
+.game {
+    background: url("https://i.gifer.com/LvDU.gif");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    border: 1px solid rgba(32, 165, 98);
+    height: 91.7vh;
+    width: 100vw;
+    margin: 0;
 }

@@ -90,7 +90,9 @@ class CanvasGame extends Component {
                 {
                     width: "800px",
                     height: "600px",
-                    border: "5px solid black"
+                    border: "5px solid black",
+                    marginLeft: "120px",
+                    marginTop: "10px"
                 }
             } />
     }
