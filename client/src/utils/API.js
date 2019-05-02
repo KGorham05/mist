@@ -21,10 +21,10 @@ export default {
   getAllArticles: function(){
     return axios.get("/api/articles")
   },
-  saveArticle: function(id){
-    return axios.post(`/api/articles/${id}`)
+  saveArticle: function(artid, userid){
+    return axios.post(`/api/articles/${artid}/${userid}`)
   },
-  getsavedArticles: function() {
-    return axios.get("/saved")
+  getsavedArticles: function(userId) {
+    return axios.get(`/saved/${userId}`)
   }
 };

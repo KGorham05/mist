@@ -36,7 +36,7 @@ class Events extends React.Component {
 
     }
     handleSave(id) {
-        API.saveArticle(id)
+        API.saveArticle(id, this.props.user.id)
     }
 
     render() {
