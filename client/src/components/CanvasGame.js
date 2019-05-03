@@ -87,7 +87,7 @@ bulb.src = "/bulb.png";
 pika.src = "/pika.png";
 char.src = "/char.png";
 this.socket.on('state', function (obj) {
-	console.log(obj.players);
+	// console.log(obj.players);
 	context.clearRect(0, 0, 800, 600);
 	for (var id in obj.players) {
 		var player = obj.players[id];
