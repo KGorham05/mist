@@ -89,11 +89,6 @@ class Signup extends Component {
             </div>
           </div>
         </div>
-        <div id="welcome-text">
-          <h1>Do you want to be the very best?</h1>
-          <h1>Stay up to date on the latest PokeNews!</h1>
-          <h1>Battle friends and foes alike!</h1>
-        </div>
 
       </div>
     );
