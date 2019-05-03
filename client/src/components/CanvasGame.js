@@ -87,7 +87,7 @@ bulb.src = "/bulb.png";
 pika.src = "/pika.png";
 char.src = "/char.png";
 this.socket.on('state', function (obj) {
-	console.log(obj.players);
+	// console.log(obj.players);
 	context.clearRect(0, 0, 800, 600);
 	for (var id in obj.players) {
 		var player = obj.players[id];
@@ -102,7 +102,7 @@ this.socket.on('state', function (obj) {
 			context.drawImage(pika, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
 
 		} else {
-			console.log(player.facing);
+			// console.log(player.facing);
 			
 			context.drawImage(bulb, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
 		}
@@ -176,10 +176,10 @@ function getSrcY(facing){
             width={800} height={600}
             style={
                 {
-                    width: "800px",
-                    height: "600px",
-                    border: "5px solid black",
-                    marginTop: "1%"
+                    width: "100%",
+                    height: "100%",
+                    border: "5px solid black"
+                    
                 }
             } />
     }

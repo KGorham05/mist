@@ -1,13 +1,17 @@
 .scoreboard {
-    height: 600px;
-    width: 300px;
+    height: 100%;
+    /* width: 300px; */
     border: 2px solid black;
-    float: left;
-    margin-top: 1%;
+    /* float: left; */
+    /* margin-top: 1%; */
     text-align: center;   
     padding: 10px;
     background-size: 100%;
-    
+    float: right;
+    color: white;
+    box-shadow: 0 3000px rgba(0, 0, 0, 0.4) inset;
+    text-shadow: 2px 2px black;
+    background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/384042f1-d9aa-4d9a-a407-37b581d3cb33/d2ub2dt-d484a677-f5ae-4c48-8dc4-7029b2518b16.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM4NDA0MmYxLWQ5YWEtNGQ5YS1hNDA3LTM3YjU4MWQzY2IzM1wvZDJ1YjJkdC1kNDg0YTY3Ny1mNWFlLTRjNDgtOGRjNC03MDI5YjI1MThiMTYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.OJaC8gffg_zbcDaM31EwSUucATwvglTjEHaEtJXo6Wc")
 }
 
 .text-rules {

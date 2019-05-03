@@ -50,10 +50,12 @@ class Chat extends Component {
                             <p key={i}><span id="userNameText">{`${item.username}`}</span>{`: ${item.message}`}</p>)}
                     </ul>
                 </div>
-                <form onSubmit={this.sendMessage}>
+                <div className="formdiv">
+                <form className="chatForm" onSubmit={this.sendMessage}>
                     <input className="inputMessage" name="message" value={this.state.message} placeholder="Type here..." onChange={this.handleInputChange} />
-                    <button type="submit">Send</button>
+                    <button type="submit" className="btn">Send</button>
                 </form>
+                </div>
             </div>
         )
     }

@@ -14,14 +14,21 @@
     background-size: cover;
     color: white */
 /* } */
-.form {
-    background: rgb(256, 256, 256, 0.1);
-    width: 20vw;
-    margin-top: 40px;
-    margin-left: 10vw;
+.welcome-text {
+    color: white;
+    /* text-shadow: 2px 2px black; */
+    width: 85%;
+    margin: 15% auto;
+}
+.welcome-text p {
+    font-size: 20px;
 }
 .form {
-    background: rgba(25, 131, 100, 0.9);
+    width: 20vw;
+    margin-top: 60px;
+    margin-left: 15vw;
+    margin-right: 5%;
+    background: rgba(25, 131, 100, 0.8);
     color: white;
 }
 .signUp {
@@ -36,6 +43,7 @@
     height: 91.7vh;
     width: 100vw;
     margin: 0;
+    box-shadow: 0 3000px rgba(0, 0, 0, 0.2) inset;
 }
 .signUp a, .login a {
     margin-left: 4px; 
@@ -151,9 +159,6 @@ iframe {
     margin-top: 2%;
 }
 .profileBtns {
-    position: absolute;
-    bottom: 50px;
-    left: 35%;
     padding: 20px;
 }
 .prof-saved, .prof-news {
@@ -196,18 +201,21 @@ iframe {
 }
 
 .game {
-    /* background: url("https://i.gifer.com/LvDU.gif");
-    -webkit-background-size: cover;
+    /* background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/384042f1-d9aa-4d9a-a407-37b581d3cb33/d2ub2dt-d484a677-f5ae-4c48-8dc4-7029b2518b16.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM4NDA0MmYxLWQ5YWEtNGQ5YS1hNDA3LTM3YjU4MWQzY2IzM1wvZDJ1YjJkdC1kNDg0YTY3Ny1mNWFlLTRjNDgtOGRjNC03MDI5YjI1MThiMTYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.OJaC8gffg_zbcDaM31EwSUucATwvglTjEHaEtJXo6Wc"); */
+    /* background: url("https://static.vecteezy.com/system/resources/previews/000/117/841/non_2x/grass-type-pokemon-pattern-vector.jpg"); */
+    background: url("https://images-na.ssl-images-amazon.com/images/I/81CyZOvDo9L._SX425_.jpg");
+    /* -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom; */
-    border: 1px solid rgba(32, 165, 98);
     height: 91.7vh;
     width: 100vw;
-    padding-left: 0.7%;
-    padding-right: 0.7%;
+    padding-top: 3%;
+}
+.gamerow {
+    width: 100vw;
 }
 canvas {
     background: url("https://vignette.wikia.nocookie.net/pokemon-planet/images/8/8e/Kanto_Pewter_City_Map.png/revision/latest?cb=20160823031028");
