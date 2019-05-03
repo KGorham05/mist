@@ -11,7 +11,7 @@ class App extends Component {
   };
 
   render = () => {
-    console.log(process.env.REACT_APP_SECRET_CODE);
+    // console.log(process.env.REACT_APP_SECRET_CODE);
     return (
       <div className="App">
         <div className="App-header">
