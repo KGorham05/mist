@@ -23,7 +23,7 @@ class Profile extends Component {
       .then(res => {
         console.log(res.data[0].articles)
         this.setState({ articles: res.data[0].articles })
-        
+
       })
   }
   handleDelete = function () {
@@ -46,13 +46,15 @@ class Profile extends Component {
       // </div>
       <div className="articles">
         <div className="home-image profile">
-          <h1 id="welcome">Welcome Trainer!</h1>
+          <h1 id="welcome">Welcome Trainer {this.state.username}!</h1>
           <iframe width="560" height="315" title="theme song" src="https://www.youtube.com/embed/rg6CiPI6h2g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <br></br>
-          <div className="profileBtns">
-            <a href="#articles"><button className="btn prof-saved">Saved Articles</button></a>
-            <a href="/events"><button className="btn prof-news">News</button></a>
-            <a href="#articles"><button className="btn prof-battle">Battle!</button></a>
+          <div className="text-center">
+            <div className="profileBtns">
+              <a href="#articles"><button className="btn prof-saved">Saved Articles</button></a>
+              <a href="/events"><button className="btn prof-news">News</button></a>
+              <a href="#articles"><button className="btn prof-battle">Battle!</button></a>
+            </div>
           </div>
         </div>
         {/* Articles */}

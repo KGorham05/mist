@@ -8,6 +8,8 @@
     text-align: left;
     /* margin-top: 1%; */
     /* margin-left: 0; */
+    background: darkslategray;
+    color: white;
 }
 
 .messageArea {
@@ -26,11 +28,12 @@
 .chatForm input{
     height: 100%;
     width: 80%;
+    background: lightgoldenrodyellow;
 }
 .chatForm button {
     width: 20%;
     height: 100%;
-    background: rgba(25, 131, 100, 0.9);
+    background: coral;
     color: white;
 }
 .messages {
@@ -38,5 +41,5 @@
 }
 
 #userNameText {
-    color: red;
+    color: lightsalmon;
 }
