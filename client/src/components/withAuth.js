@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 import openSocket from 'socket.io-client';
 
-const socket = openSocket();
+let socket;
+
+if (process.env.REACT_APP_SOCKET_URL) {
+    socket = openSocket();  
+} else {
+    socket = openSocket("http://localhost:3001")
+}
 
 export default function withAuth(AuthComponent, extraProp) {
     const Auth = new AuthService();

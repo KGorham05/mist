@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
 import API from './../utils/API';
-import { Link } from 'react-router-dom';
 
 class Profile extends Component {
 
@@ -19,9 +18,9 @@ class Profile extends Component {
       })
     });
 
-    API.getsavedArticles(this.props.user.id)
+    API.getSavedArticles(this.props.user.id)
       .then(res => {
-        console.log(res.data[0].articles)
+        // console.log(res.data[0].articles)
         this.setState({ articles: res.data[0].articles })
 
       })
