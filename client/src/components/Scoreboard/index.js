@@ -11,8 +11,8 @@ function Scoreboard(props) {
             <li className="text-rules">If you get hit 10 times, you're out!</li>
             <li className="text-rules">The first character to connect starts as Charizard!</li>
             <li className="text-rules">Charizard can run over other players to damage them!</li>
-            <li className="text-rules">If a player gets run over by Charizard, they become the Charizard and you transform into Pikachu!</li>
-            <li className="text-rules">No tag backs! Charizard can't run over the Pikachu, he's too small and fast! </li>
+            <li className="text-rules">Charizard turns into Pikachu when he runs someone over, and they become the new Charizard!</li>
+            <li className="text-rules">No tag backs! Pikachu's too small and fast to be run over! </li>
         </div>
     )
 }

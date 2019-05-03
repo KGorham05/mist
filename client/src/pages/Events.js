@@ -20,7 +20,7 @@ class Events extends React.Component {
             API.getAllArticles()
                 .then(res => {
                     this.setState({ articles: res.data })
-                    console.log(this)
+                    console.log(res.data)
                 })
         })
 
