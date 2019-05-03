@@ -20,7 +20,6 @@ class Profile extends Component {
 
     API.getSavedArticles(this.props.user.id)
       .then(res => {
-        // console.log(res.data[0].articles)
         this.setState({ articles: res.data[0].articles })
 
       })
