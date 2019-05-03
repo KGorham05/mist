@@ -24,7 +24,7 @@ export default {
   saveArticle: function(artid, userid){
     return axios.post(`/api/articles/${artid}/${userid}`)
   },
-  getsavedArticles: function(userId) {
+  getSavedArticles: function(userId) {
     return axios.get(`/saved/${userId}`)
   }
 };
