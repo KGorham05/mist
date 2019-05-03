@@ -182,14 +182,14 @@ io.on('connection', function(socket) {
 	})
 
 
-	socket.on('new player', function() {
+	socket.on('new player', function(username) {
 		console.log(players);
 		if(isEmpty(players)){
 			predatorId = socket.id;
 			lastPredatorId = socket.id;
-			players[socket.id] = new Play(true); //set predator to this player
+			players[socket.id] = new Play(true, username); //set predator to this player
 		}else{
-			players[socket.id] = new Play(false);//set predator false 
+			players[socket.id] = new Play(false, username);//set predator false 
 		}
 		console.log(players);
 	});
@@ -264,6 +264,7 @@ setInterval(function() {
 			players[predatorId].lastPredator = true;
 			players[preyId].predator = true;
 			if(players[preyId].hp <= 30){
+				dieMessage(preyId);
 				safeRemove(preyId);
 			}else{
 				players[preyId].hp -= 30;
@@ -290,6 +291,7 @@ setInterval(function() {
 					Math.pow(players[id].y - projectiles[p].y +32,2)) < 14)
 			){
 				if(players[id].hp <= 10){
+					dieMessage(id);
 					safeRemove(id);
 				}else{
 					players[id].hp -=10;
@@ -328,7 +330,9 @@ function Proj(socketId){
 	this.Dy = 0;
 	this.distRem = 500; 
 }
-function Play(isPred){
+function Play(isPred, username){
+	this.username = username;
+	console.log(this.username);
 	this.predator = isPred;
 	this.lastPredator = false;
 	this.frameX = 0;
@@ -340,7 +344,12 @@ function Play(isPred){
 	this.canFire = true;
 }
 
-
+function dieMessage(socketId) {
+		io.emit('new message', {
+		message: `${players[socketId].username} has been knocked-out!`,
+		username: "GAME UPDATE"
+	})
+}
 
 function safeRemove(socketId){
 	delete players[socketId];     	

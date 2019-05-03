@@ -14,7 +14,7 @@ function Game(props) {
                 <Scoreboard />
                 </div>
                 <div className="col-md-6">
-                <CanvasGame socket={props.socket} />
+                <CanvasGame username={props.user.username} socket={props.socket} />
                 </div>
                 <div className="col-md-3">
                 <Chat username={props.user.username} socket={props.socket} />
