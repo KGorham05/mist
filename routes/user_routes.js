@@ -30,11 +30,7 @@ const setupUserRoutes = (app) => {
         }).catch(err => res.status(400).send(err));
     });
 
-    // Serve up static assets (usually on heroku)
-    if (process.env.NODE_ENV === "production") {
-        app.use(express.static("client/build"));
-    }
-
+   
     app.get('/', isAuthenticated /* Using the express jwt MW here */, (req, res) => {
         res.send('You are authenticated'); //Sending some response when authenticated
     });

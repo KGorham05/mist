@@ -10,10 +10,17 @@ class Chat extends Component {
     };
 
     componentDidMount = () => {
-        // this function not working 
+        
+        const messageDiv = document.getElementsByClassName('messageArea');
+
+        function scrollToBottom() {
+            messageDiv[0].scrollTop = messageDiv[0].scrollHeight;
+          }
+       
+
         this.socket.on('new message', data => {
-            console.log('display message was hit');
             this.displayMessage(data);
+            scrollToBottom();
         });
     }
 

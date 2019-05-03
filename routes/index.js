@@ -34,6 +34,11 @@ app.use(function (err, req, res, next) {
     }
 });
 
+ // Serve up static assets (usually on heroku)
+ if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
+
 // Send every request to the React app
 // All other API routes declared before this runs
 app.get("*", function (req, res) {
