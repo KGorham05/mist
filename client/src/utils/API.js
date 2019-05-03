@@ -26,5 +26,8 @@ export default {
   },
   getSavedArticles: function(userId) {
     return axios.get(`/saved/${userId}`)
+  },
+  deleteArticle: function(artid, userid) {
+    return axios.delete(`/api/delete/${artid}/${userid}`)
   }
 };

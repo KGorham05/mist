@@ -41,15 +41,26 @@ app.get("/api/articles", (req, res) => {
 })
 //save an article
 app.post("/api/articles/:articleId/:userId", (req, res) => {
-  console.log("worked")
   db.Article
     .findOneAndUpdate({ _id: req.params.articleId }, { saved: true }, { new: true })
     .then(dbArticle => {
       return db.User.findOneAndUpdate({_id: req.params.userId}, {$push: {articles: dbArticle._id}}, {new: true})
     })
     .then(dbArticle => res.json(dbArticle))
-    
 });
+//delete a saved article
+app.delete("/api/delete/:articleId/:userId", (req, res) => {
+	db.Article
+		.findOneAndUpdate({_id: req.params.articleId}, {saved: false}, {new: true})
+		.then(dbArticle => {
+			console.log(dbArticle._id)
+			console.log(req.params.userId)
+			return db.User.update({_id: req.params.userId}, {$pull: {articles: req.params.articleId}}).then(result => {
+				console.log(result)
+				res.json(result)
+			})
+		})
+	})
 //Get saved articles for the profile page
 app.get("/saved/:userId", (req, res) => {
   // db.Article
