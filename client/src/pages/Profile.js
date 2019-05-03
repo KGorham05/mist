@@ -25,24 +25,20 @@ class Profile extends Component {
 
       })
   }
-  handleDelete = function () {
-
+  handleDelete = (id) => {
+    API.deleteArticle(id, this.props.user.id)
+       .then(res => {
+         API.getSavedArticles(this.props.user.id)
+         .then(res => {
+          // console.log(res.data[0].articles)
+          this.setState({ articles: res.data[0].articles })
+  
+        })
+       })
+      
   }
   render() {
     return (
-      // <div className="Profile">
-      //   <h1>Welcome Trainer!</h1>
-      //   <p>Username: {this.state.username}</p>
-      //   <p>Email: {this.state.email}</p>
-      //   <Link to="/">Go home</Link>
-
-      //   <div className="savedArticles">
-      //     {this.state.articles.map(article => (
-      //       <h1>{article.title}</h1>
-      //     ))}
-
-      //   </div>
-      // </div>
       <div className="articles">
         <div className="home-image profile">
           <h1 id="welcome">Welcome Trainer {this.state.username}!</h1>
