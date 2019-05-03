@@ -42,42 +42,52 @@ class Signup extends Component {
   render() {
     return (
       <div className="signUp">
-        <div className="container form">
+        <div className="row">
+          <div className="container form col-md-3">
 
-          <h1>Signup</h1>
-          <form onSubmit={this.handleFormSubmit}>
-            <div className="form-group">
-              <label htmlFor="username">Username:</label>
-              <input className="form-control"
-                placeholder="Username"
-                name="username"
-                type="text"
-                id="username"
-                onChange={this.handleChange} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email address:</label>
-              <input className="form-control"
-                placeholder="Email"
-                name="email"
-                type="email"
-                id="email"
-                onChange={this.handleChange} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="pwd">Password:</label>
-              <input className="form-control"
-                placeholder="Password goes here..."
-                name="password"
-                type="password"
-                id="pwd"
-                onChange={this.handleChange} />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-          </form>
-          <p>Already have an account?
+            <h1>Signup</h1>
+            <form onSubmit={this.handleFormSubmit}>
+              <div className="form-group">
+                <label htmlFor="username">Username:</label>
+                <input className="form-control"
+                  placeholder="Username"
+                  name="username"
+                  type="text"
+                  id="username"
+                  onChange={this.handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email address:</label>
+                <input className="form-control"
+                  placeholder="Email"
+                  name="email"
+                  type="email"
+                  id="email"
+                  onChange={this.handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="pwd">Password:</label>
+                <input className="form-control"
+                  placeholder="Password goes here..."
+                  name="password"
+                  type="password"
+                  id="pwd"
+                  onChange={this.handleChange} />
+              </div>
+              <button type="submit" className="btn btn-primary">Submit</button>
+            </form>
+            <p>Already have an account?
           <Link to="/login" className="btn btn-success">Login</Link>
-          </p>
+            </p>
+          </div>
+          <div className="col-md-5" >
+            <div className="welcome-text">
+              <h1 className="text-center">
+                Do you want to be the very best, like no one ever was?
+            </h1>
+              <p className="text-center">Then join The Elite 4 today! Keep up to date on the latest Pokemon news, and battle against your friends in an epic Pokemon faceoff! Sign up today...it's your destiny!</p>
+            </div>
+          </div>
         </div>
         <div id="welcome-text">
           <h1>Do you want to be the very best?</h1>
