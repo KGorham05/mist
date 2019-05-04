@@ -265,6 +265,7 @@ setInterval(function() {
 			players[preyId].predator = true;
 			if(players[preyId].hp <= 30){
 				dieMessage(preyId);
+				console.log(players);
 				safeRemove(preyId);
 			}else{
 				players[preyId].hp -= 30;
