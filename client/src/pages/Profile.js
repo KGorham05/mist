@@ -55,7 +55,7 @@ class Profile extends Component {
         {/* Articles */}
         <div className="articles row" id="articles">
           {this.state.articles.map(article => (
-            <div className="card bg-dark text-white col-md-4">
+            <div key={article._id} className="card bg-dark text-white col-md-4">
               <h3 className="card-title">
                 {article.title}
               </h3>

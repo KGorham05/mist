@@ -16,11 +16,13 @@ class Events extends React.Component {
     }
 
     handleScrape = () => {
-        API.scrape().then(() => {
+        API.scrape()
+           .then(() => {
             API.getAllArticles()
                 .then(res => {
+                    console.log(res)
                     this.setState({ articles: res.data })
-                    console.log(this)
+                    
                 })
         })
 
@@ -30,6 +32,7 @@ class Events extends React.Component {
         API.clear().then(() => {
             API.getAllArticles()
                 .then(res => {
+                    console.log(res.data)
                     this.setState({ articles: res.data })
                 })
         })
