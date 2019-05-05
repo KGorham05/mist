@@ -178,7 +178,7 @@ class CanvasGame extends Component {
 	}
 	render() {
 		return (
-			<div>
+			<div class="gamediv">
 				<canvas id="canvas" ref="canvasGame"
 					width={800} height={600}
 					style={

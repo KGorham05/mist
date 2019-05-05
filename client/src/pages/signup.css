@@ -194,3 +194,6 @@ canvas {
     background-repeat: no-repeat;
     background-position: center bottom;
 }
+.gamediv {
+    height: 100%;
+}
