@@ -2,11 +2,6 @@
 
 ## [This](#) is a Fan Site
 ### Do you want to be the very best, like no one ever was? Then join The Elite 4 today! Keep up to date on the latest Pokemon news, and battle against your friends in an epic Pokemon faceoff! Sign up today...it's your destiny!  
-[![Image from Gyazo](https://i.gyazo.com/d2a70f968d2ddad22a8013b04a56419d.jpg)](https://gyazo.com/d2a70f968d2ddad22a8013b04a56419d)  
-  
-[![Image from Gyazo](https://i.gyazo.com/d88ead7493cb5cf191ba4a7c154d5748.gif)](https://gyazo.com/d88ead7493cb5cf191ba4a7c154d5748)  
-   
-[![Image from Gyazo](https://i.gyazo.com/93cfb2d09cc4f51ee1b60c93f9bfde1e.gif)](https://gyazo.com/93cfb2d09cc4f51ee1b60c93f9bfde1e) 
     
 [![Image from Gyazo](https://i.gyazo.com/ba8bf3a69edda47c7df9cba81a1fce75.gif)](https://gyazo.com/ba8bf3a69edda47c7df9cba81a1fce75)
   
