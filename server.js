@@ -15,6 +15,7 @@ io.on('connection', function (socket) {
   socket.on('new message', (data) => {
     io.emit('new message', data);
   });
+});
 
 server.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
