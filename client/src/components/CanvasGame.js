@@ -61,7 +61,7 @@ class CanvasGame extends Component {
         // Make it listen for key presses
         canvas.tabIndex = 1000;
         canvas.addEventListener("keydown", this.keyDown, false);
-        canvas.addEventListener("keyup", this.keyUp, false);
+		canvas.addEventListener("keyup", this.keyUp, false);
 
 //left pointing images are in row of index 1 in sheet
 var srcLeft = 1;
