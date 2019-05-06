@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
 import API from './../utils/API';
+import Article from '../components/Article';
 
 class Profile extends Component {
 
@@ -21,7 +22,6 @@ class Profile extends Component {
     API.getSavedArticles(this.props.user.id)
       .then(res => {
         this.setState({ articles: res.data[0].articles })
-
       })
   }
   handleDelete = (id) => {
@@ -34,7 +34,6 @@ class Profile extends Component {
   
         })
        })
-      
   }
   render() {
     return (
@@ -54,23 +53,7 @@ class Profile extends Component {
         {/* Articles */}
         <div className="articles row" id="articles">
           {this.state.articles.map(article => (
-            <div className="card bg-dark text-white col-md-4">
-              <h3 className="card-title">
-                {article.title}
-              </h3>
-              <img src={article.image} className="card-img" alt="article img"></img>
-
-              <div className="card-img-overlay">
-                <div className="transbox">
-                  <p className="card-text">
-                    {article.summary}
-                  </p>
-                  <a href={article.link}><button className="read btn">Read</button></a>
-                  <button className="save btn" onClick={() => this.handleDelete(article._id)}>Delete</button>
-                </div>
-              </div>
-
-            </div>
+            <Article key={article._id} handleDelete={() => this.handleDelete(article._id)} article={article} user={this.props.user} />
           ))}
         </div>
       </div>
