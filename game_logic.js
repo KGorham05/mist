@@ -27,6 +27,19 @@ const gameLogic = function (io) {
             var player = players[socket.id] || {};
             player.facing = data.facing;
             player.frameX = ++player.frameX % 4;
+			//
+			if(player.x < -32) 
+				player.x = 736;
+
+			else if (player.x > 736) 
+				player.x = -32;
+
+			if(player.y < -32)
+				player.y = 536;
+
+			else if(player.y > 536)
+				player.y = -32;
+			//
             if (data.fire && player.canFire) {
                 player.canFire = false;
                 var proj = new Proj(socket.id)
