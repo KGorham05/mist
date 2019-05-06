@@ -81,59 +81,22 @@ class CanvasGame extends Component {
 		//width and height of each frame:
 		var width = sheetWidth / cols; //64
 		var height = sheetHeight / rows //64
-//left pointing images are in row of index 1 in sheet
-var srcLeft = 1;
-//right facing images are in row of index 2 in sheet
-var srcRight = 2;
-var srcX=0;
-var srcY=0;
-//sprite sheet dimensions
-var sheetWidth = 256;
-var sheetHeight = 256;
-var cols = 4;
-var rows = 4
-//width and height of each frame:
-var width = sheetWidth / cols; //64
-var height = sheetHeight / rows //64
+		//left pointing images are in row of index 1 in sheet
+		var srcLeft = 1;
+		//right facing images are in row of index 2 in sheet
+		var srcRight = 2;
+		var srcX = 0;
+		var srcY = 0;
+		//sprite sheet dimensions
+		var sheetWidth = 256;
+		var sheetHeight = 256;
+		var cols = 4;
+		var rows = 4
+		//width and height of each frame:
+		var width = sheetWidth / cols; //64
+		var height = sheetHeight / rows //64
 
-var currentFrame = 0;
-
-var bulb = new Image();
-var pika = new Image();
-var char = new Image();
-bulb.src = "/bulb.png";
-pika.src = "/pika.png";
-char.src = "/char.png";
-this.socket.on('state', function (obj) {
-	// console.log(obj.players);
-	context.clearRect(0, 0, 800, 600);
-	for (var id in obj.players) {
-		var player = obj.players[id];
-		if (player.lastPredator) {
-			if (player.predator) {
-				context.drawImage(char, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
-			} else {
-				context.drawImage(pika, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
-		
-			}
-		} else if (player.predator) {
-			context.drawImage(char, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
-
-		} else {
-			// console.log(player.facing);
-			
-			context.drawImage(bulb, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
-		}
-	}
-	for (var p in obj.projectiles) {
-		var prj = obj.projectiles[p];
-		context.fillStyle = 'red';
-		context.beginPath();
-		context.arc(prj.x, prj.y, 4, 0, 2 * Math.PI);
-		context.fill();
-	}
-});
-
+		var currentFrame = 0;
 
 		var bulb = new Image();
 		var pika = new Image();
@@ -148,13 +111,13 @@ this.socket.on('state', function (obj) {
 				var player = obj.players[id];
 				if (player.lastPredator) {
 					if (player.predator) {
-						context.drawImage(pika, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
-					} else {
 						context.drawImage(char, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
+					} else {
+						context.drawImage(pika, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
 
 					}
 				} else if (player.predator) {
-					context.drawImage(pika, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
+					context.drawImage(char, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
 
 				} else {
 					// console.log(player.facing);
@@ -170,6 +133,8 @@ this.socket.on('state', function (obj) {
 				context.fill();
 			}
 		});
+
+
 
 
 		function getSrcY(facing) {
