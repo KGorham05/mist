@@ -93,13 +93,13 @@ this.socket.on('state', function (obj) {
 		var player = obj.players[id];
 		if (player.lastPredator) {
 			if (player.predator) {
-				context.drawImage(pika, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
-			} else {
 				context.drawImage(char, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
+			} else {
+				context.drawImage(pika, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
 		
 			}
 		} else if (player.predator) {
-			context.drawImage(pika, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
+			context.drawImage(char, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
 
 		} else {
 			// console.log(player.facing);
