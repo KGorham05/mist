@@ -31,7 +31,7 @@ const setupUserRoutes = (app) => {
     });
 
    
-    app.get('/', isAuthenticated /* Using the express jwt MW here */, (req, res) => {
+    app.get('/', (req, res) => {
         res.send('You are authenticated'); //Sending some response when authenticated
     });
 }
