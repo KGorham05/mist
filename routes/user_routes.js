@@ -30,10 +30,6 @@ const setupUserRoutes = (app) => {
         }).catch(err => res.status(400).send(err));
     });
 
-   
-    app.get('/', (req, res) => {
-        res.send('You are authenticated'); //Sending some response when authenticated
-    });
 }
 
 module.exports = setupUserRoutes;

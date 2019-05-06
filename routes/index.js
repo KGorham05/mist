@@ -1,8 +1,9 @@
-const express =  require('express');
-const path =  require('path');
-const morgan =  require('morgan'); // used to see requests
-const setupUserRoutes =  require('./user_routes');
-const setupArticleRoutes =  require('./article_routes');
+const express = require('express');
+const path = require('path');
+const morgan = require('morgan'); // used to see requests
+const setupUserRoutes = require('./user_routes');
+const setupArticleRoutes = require('./article_routes');
+const isAuthenticated = require("./../config/isAuthenticated");
 
 const app = express();
 
@@ -34,10 +35,14 @@ app.use(function (err, req, res, next) {
     }
 });
 
- // Serve up static assets (usually on heroku)
+// Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
+
+app.get('/', isAuthenticated, (req, res) => {
+    res.send('You are authenticated'); //Sending some response when authenticated
+});
 
 // Send every request to the React app
 // All other API routes declared before this runs
