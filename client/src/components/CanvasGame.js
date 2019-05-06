@@ -52,7 +52,7 @@ class CanvasGame extends Component {
 	}
 
 	componentDidMount = () => {
-		this.socket.emit('new player');
+		this.socket.emit('new player', this.props.username);
 		const canvas = this.refs.canvasGame;
 		canvas.width = 800;
 		canvas.height = 600;
