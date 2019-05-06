@@ -1,6 +1,7 @@
 import React from "react";
 import withAuth from './../components/withAuth';
 import API from "../utils/API";
+import Article from "../components/Article";
 
 
 class Events extends React.Component {
@@ -53,23 +54,7 @@ class Events extends React.Component {
                 {/* Articles */}
                 <div className="articles row">
                     {this.state.articles.map(article => (
-                        <div key={article._id} className="card bg-dark text-white col-md-4">
-                            <h3 className="card-title">
-                                {article.title}
-                            </h3>
-                            <img src={article.image} className="card-img" alt="article img"></img>
-
-                            <div className="card-img-overlay">
-                                <div className="transbox">
-                                    <p className="card-text">
-                                        {article.summary}
-                                    </p>
-                                    <a href={article.link}><button className="read btn">Read</button></a>
-                                    <button className="save btn" onClick={() => this.handleSave(article._id)}>Save</button>
-                                </div>
-                            </div>
-
-                        </div>
+                        <Article key={article._id} handleSave={() => this.handleSave(article._id)} article={article} user={this.props.user} />
                     ))}
                 </div>
             </div>
