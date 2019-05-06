@@ -22,7 +22,6 @@ class Events extends React.Component {
                 .then(res => {
                     console.log(res)
                     this.setState({ articles: res.data })
-                    
                 })
         })
 

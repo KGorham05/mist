@@ -27,7 +27,6 @@ class CanvasGame extends Component {
 				break;
 			case 32: // space
 				this.setState({ fire: true });
-
 			default: break;
 		}
 	}

@@ -20,7 +20,6 @@ class Profile extends Component {
 
     API.getSavedArticles(this.props.user.id)
       .then(res => {
-        // console.log(res.data[0].articles)
         this.setState({ articles: res.data[0].articles })
 
       })
@@ -48,7 +47,7 @@ class Profile extends Component {
             <div className="profileBtns">
               <a href="#articles"><button className="btn prof-saved">Saved Articles</button></a>
               <a href="/events"><button className="btn prof-news">News</button></a>
-              <a href="#articles"><button className="btn prof-battle">Battle!</button></a>
+              <a href="/game"><button className="btn prof-battle">Battle!</button></a>
             </div>
           </div>
         </div>

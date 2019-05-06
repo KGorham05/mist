@@ -131,6 +131,7 @@
 }
 #welcome {
     padding-top: 40px;
+    text-shadow: 2px 2px black;
 }
 iframe {
     margin-top: 2%;
