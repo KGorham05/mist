@@ -130,7 +130,7 @@ class CanvasGame extends Component {
 				context.font = 
 					(this.props.socket.id === id) ? "28px Arial" : "20px Arial";   //Comic Sans MS";
         		context.fillStyle = 
-					(this.props.socket.id === id) ? "#CCFF00" : "#FF00CC";
+					(this.props.socket.id === id) ? "#66FF66" : "#FF00CC";
 					//colorUser(player.hp);
         		context.textAlign = "center";
         		context.fillText(player.username, player.x +32, player.y +8);
