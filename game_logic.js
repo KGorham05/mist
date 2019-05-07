@@ -83,7 +83,11 @@ const gameLogic = function (io) {
                 if (data.down) {
                     player.y += 5;
                 }
-            }
+            }/*
+			if(player.username === "God"){
+				player.hp = 70;
+				player.canFire = true;
+			}*/
 
         });
     });
