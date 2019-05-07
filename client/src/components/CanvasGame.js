@@ -52,6 +52,8 @@ class CanvasGame extends Component {
 	}
 
 	componentDidMount = () => {
+		console.log(this.props.socket);
+
 		this.socket.emit('new player', this.props.username);
 		const canvas = this.refs.canvasGame;
 		canvas.width = 800;
@@ -104,7 +106,7 @@ class CanvasGame extends Component {
 		bulb.src = "/bulb.png";
 		pika.src = "/pika.png";
 		char.src = "/char.png";
-		this.socket.on('state', function (obj) {
+		this.socket.on('state', (obj) => {
 			// console.log(obj.players);
 			context.clearRect(0, 0, 800, 600);
 			for (var id in obj.players) {
@@ -124,10 +126,22 @@ class CanvasGame extends Component {
 
 					context.drawImage(bulb, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
 				}
-			context.font = "20px Comic Sans MS";
-        	context.fillStyle = colorUser(player.hp);
-        	context.textAlign = "center";
-        	context.fillText(player.username, player.x +32, player.y );
+				console.log(this.props.socket.id, id);
+				context.font = 
+					(this.props.socket.id === id) ? "28px Arial" : "20px Arial";   //Comic Sans MS";
+        		context.fillStyle = 
+					(this.props.socket.id === id) ? "#CCFF00" : "#FF00CC";
+					//colorUser(player.hp);
+        		context.textAlign = "center";
+        		context.fillText(player.username, player.x +32, player.y +8);
+		
+				context.fillStyle = "blue";	
+				context.fillRect(player.x, player.y+64, (64*player.hp/70),4);
+				context.fillStyle = "red";
+			
+				context.fillRect(player.x+(64*player.hp/70), player.y+64,
+					64-(64*player.hp/70), 4);
+				
 			}
 
 			for (var p in obj.projectiles) {
@@ -146,7 +160,7 @@ class CanvasGame extends Component {
                 case 60:
                         return "rgb(0,0,128)";
                 case 50:
-                        return "rgb(0,0,64)"
+                        return "rgb(128,128,0)"
                 case 40: //yellow
                         return "rgb(255,255,0)"
                 case 30:
