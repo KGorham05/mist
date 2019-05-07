@@ -124,7 +124,12 @@ class CanvasGame extends Component {
 
 					context.drawImage(bulb, player.frameX * width, getSrcY(player.facing), width, height, player.x, player.y, width, height);
 				}
+			context.font = "20px Comic Sans MS";
+        	context.fillStyle = colorUser(player.hp);
+        	context.textAlign = "center";
+        	context.fillText(player.username, player.x +32, player.y );
 			}
+
 			for (var p in obj.projectiles) {
 				var prj = obj.projectiles[p];
 				context.fillStyle = 'red';
@@ -134,7 +139,26 @@ class CanvasGame extends Component {
 			}
 		});
 
-
+		function colorUser(hp){
+        	switch(hp){
+                case 70: //blue
+                        return "rgb(0,0,255)";
+                case 60:
+                        return "rgb(0,0,128)";
+                case 50:
+                        return "rgb(0,0,64)"
+                case 40: //yellow
+                        return "rgb(255,255,0)"
+                case 30:
+                        return "rgb(255, 128,0)"
+                case 20:
+                        return "rgb(225, 64, 0)"
+                case 10://red
+                        return "rgb(255,0,0)"
+                default:
+                        return "black"
+        }
+}
 
 
 		function getSrcY(facing) {

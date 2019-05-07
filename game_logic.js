@@ -182,7 +182,7 @@ const gameLogic = function (io) {
         this.x = 736 * Math.random();
         this.y = 536 * Math.random();
         this.fire = false;
-        this.hp = 100;
+        this.hp = 70;
         this.canFire = true;
     }
 
