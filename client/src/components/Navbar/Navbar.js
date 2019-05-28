@@ -11,51 +11,52 @@ class Navbar extends Component {
     showNavigation = () => {
         if (this.Auth.loggedIn()) {
             return (
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/">Profile</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/game">Battle</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/events">News</Link>
-                    </li>
-                    <li className="nav-item">
-                        {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-                        <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>Logout</a>
-                    </li>
-                </ul>
+                <div>
+                    <Link className="nav-link" to="/">Profile</Link>
+
+                    <Link className="nav-link" to="/game">Battle</Link>
+
+                    <Link className="nav-link" to="/events">News</Link>
+
+                    {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+                    <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>Logout</a>
+                </div>
             );
         } else {
             return (
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/signup">Signup</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/login">Login</Link>
-                    </li>
-                </ul>
+                <div>
+                    <Link className="nav-link" to="/signup">Signup</Link>
+
+
+                    <Link className="nav-link" to="/login">Login</Link>
+                </div>
             );
         }
     };
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg">
-                <div className="container">
-                    <Link className="navbar-brand" to="/">The Elite 4</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+            <div className="navbar">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fas fa-bars"></i>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav mr-auto">
-                        </ul>
+                    <Link className="navbar-brand" to="/">The Elite 4</Link>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         {this.showNavigation()}
                     </div>
                 </div>
-            </nav>
+                {/* <!--Full Navbar--> */}
+                <nav id="nav-bar">
+                    <div className="text-center">
+                        <Link className="navbar-brand" to="/">The Elite 4</Link>
+                        <div className="navbar-links">
+                            {this.showNavigation()}
+                        </div>
+                    </div>
+                </nav>
+            </div>
         )
     }
 }
