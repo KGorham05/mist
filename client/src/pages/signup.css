@@ -1,3 +1,10 @@
+body, html, #root {
+    height: 100%;
+}
+.full {
+    height: 100%;
+    
+}
 .welcome-text {
     color: white;
     width: 85%;
@@ -7,12 +14,12 @@
     font-size: 20px;
 }
 .form {
-    width: 20vw;
-    margin-top: 60px;
+    margin-top: 7%;
     margin-left: 15vw;
     margin-right: 5%;
     background: rgba(25, 131, 100, 0.8);
     color: white;
+    padding-bottom: 10px;
 }
 .signUp {
     background: url("./assets/signup.gif");
@@ -23,8 +30,8 @@
     background-repeat: no-repeat;
     background-position: center bottom;
     border: 1px solid rgba(32, 165, 98);
-    height: 91.7vh;
-    width: 100vw;
+    height: 100%;
+    overflow: auto;
     margin: 0;
     box-shadow: 0 3000px rgba(0, 0, 0, 0.2) inset;
 }
@@ -41,16 +48,23 @@
     background-position: center bottom;
     border: 1px solid rgba(25, 131, 100, 0.9);
     color: white;
-    height: 91.7vh;
-    width: 100vw;
+    height: 100%;
     margin: 0;
 }
-
+#nav-bar {
+    width: 100%;
+}
 .navbar {
     background: rgba(25, 131, 100, 0.9);
+    height: 60px;
 }
 .navbar a {
     color: white;
+    float: left;
+}
+.navbar-links {
+    float: right;
+    display: inline;
 }
 .articles {
     background-color: rgba(25, 131, 100, 0.9);
@@ -179,12 +193,8 @@ iframe {
 
 .game {
     background: url("./assets/game.jpg");
-    height: 91.7vh;
-    width: 100vw;
+    height: 100%;
     padding-top: 3%;
-}
-.gamerow {
-    width: 100vw;
 }
 canvas {
     background: url("./assets/canvas.png");
@@ -197,4 +207,39 @@ canvas {
 }
 .gamediv {
     height: 100%;
+}
+.row {
+    width: 99vw;
+    margin: 0 auto;
+}
+.dropdown {
+    display: none;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  #dropdownMenu2 {
+    margin: 10px 20px
+  }
+  @media screen and (max-width: 780px) {
+    .dropdown {
+      display: initial;
+    }
+    .dropdown button {
+        background: white;
+    }
+    #nav-bar {
+      display: none;
+    }
+    .navbar a {
+        color: black;
+        float: none;
+    }
+    .navbar a:hover {
+        background: rgba(25, 131, 100, 0.9)
+    }
+    iframe {
+        width: 100%;
+    }
 }

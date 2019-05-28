@@ -25,7 +25,7 @@ if(localStorage.getItem("id_token")) {
 
 ReactDOM.render(
     <Router>
-        <div>
+        <div className="full">
             <Navbar />
             <Route exact path="/" component={withAuth(Profile)} />
             <Route exact path="/login" component={Login} />

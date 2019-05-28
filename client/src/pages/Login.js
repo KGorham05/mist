@@ -38,7 +38,7 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
-        <div className="container form">
+        <div className="container form col-md-4">
           <h1>Login</h1>
           <form onSubmit={this.handleFormSubmit}>
             <div className="form-group">
